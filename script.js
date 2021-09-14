@@ -82,9 +82,12 @@ const setupEventListeners = {
   controlItems: function(){
     //add a new photo to the gallery
     domElements.fileInput.add.addEventListener('click', function(){
-      const newPhoto = domElements.fileInput.input.files[0]
-      if(newPhoto){
-        controlItems.addNewItem(newPhoto)
+      const newPhotos = domElements.fileInput.input.files
+      const number = newPhotos.length
+      if(number > 0){
+        for(let i = 0; i < number; i++){
+          controlItems.addNewItem(newPhotos[i])
+        }
       } else alert('Please add an image.')
     })
     //change design color
