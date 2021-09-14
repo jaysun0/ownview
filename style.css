@@ -1,0 +1,62 @@
+@import 'header/header.css';
+@import 'main/main.css';
+@import 'gallery/gallery.css';
+@import 'footer/footer.css';
+@import 'queries.css';
+
+@font-face{
+  font-family: 'Roboto-bold';
+  src: url('fonts/Roboto-Bold.ttf');
+}
+@font-face{
+  font-family: 'Roboto-regular';
+  src: url('fonts/Roboto-Regular.ttf');
+}
+
+:root{
+  --main-color: linear-gradient(#222b 35%, #222);
+  --accent-color: #82a7d4;
+  --gallery-button-dark: #0007;
+  --gallery-button-light: #fff7;
+  --standard-border: 3px solid #000;
+
+  //queries steps
+  --query-first: 700px;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  scroll-behavior: smooth;
+
+  font-family: 'Roboto-regular', sans-serif;
+  color: #fff;
+}
+
+html{
+  font-size: 20px;
+}
+
+.page {
+  margin: 0 auto;
+  background: var(--accent-color);
+  background-attachment: fixed;
+}
+
+.container{
+  min-height: 100vh;
+}
+
+.btn{
+  font-size: 1rem;
+	padding: .15em .9em;
+
+  color: #000;
+	border-radius: 5px;
+	cursor: pointer;
+  transition: transform: 150ms;
+}
+.btn:hover{
+  transform: translateY(2px);
+}

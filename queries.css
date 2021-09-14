@@ -1,0 +1,137 @@
+@media screen and (max-width: 800px){
+  .small-gallery__back-button{
+    right: 1em;
+  }
+
+  //presentaiton mode
+  .gallery__button_close{
+  	height: 10%;
+  }
+  .gallery__button_previous{
+  	width: 12%;
+  }
+  .gallery__button_next{
+  	width: 12%;
+  }
+  .gallery__carousel-indicators-wrapper{
+  	height: 10%;
+  }
+}
+
+@media screen and (max-width: 700px){
+  .section-photo__wrapper{
+		flex-wrap: wrap;
+	}
+
+	.section-photo__controls-wrapper{
+		width: 100%;
+	}
+
+	.section-photo__color-input-main-wrapper{
+		width: 50%;
+	}
+
+	.section-photo__create-btn{
+		margin: 1rem 0;
+		width: 50%;
+		order: 2;
+	}
+
+	.file-input{
+		order: 1;
+		width: 50%;
+	}
+
+  //presentaiton mode
+  .gallery__button_close{
+  	height: 12%;
+  }
+  .gallery__button_previous{
+  	width: 14%;
+  }
+  .gallery__button_next{
+  	width: 14%;
+  }
+  .gallery__carousel-indicators-wrapper{
+  	height: 12%;
+  }
+}
+
+@media screen and (max-width: 600px){
+  .section-photo__wrapper{
+		padding: 0;
+    padding-top: 2rem;
+	}
+
+	.section-photo__color-input-main-wrapper{
+		width: 60%;
+	}
+
+	.section-photo__create-btn{
+		width: 60%;
+	}
+
+	.file-input{
+		width: 60%;
+	}
+
+  //presentaiton mode
+  .gallery__button_close{
+  	height: 14%;
+  }
+  .gallery__button_previous{
+  	width: 16%;
+  }
+  .gallery__button_next{
+  	width: 16%;
+  }
+  .gallery__carousel-indicators-wrapper{
+  	height: 14%;
+  }
+}
+
+@media screen and (max-width: 500px){
+	.section-photo__color-input-main-wrapper{
+		width: 70%;
+	}
+
+	.section-photo__create-btn{
+		width: 70%;
+	}
+
+	.file-input{
+		width: 70%;
+	}
+
+  .small-gallery{
+  	max-width: 100%;
+  }
+
+  //presentaiton mode
+  .gallery__button_close{
+  	height: 16%;
+  }
+  .gallery__button_previous{
+  	width: 18%;
+  }
+  .gallery__button_next{
+  	width: 18%;
+  }
+  .gallery__carousel-indicators-wrapper{
+  	height: 16%;
+  }
+}
+
+@media screen and (max-width: 400px){
+	.section-photo__color-input-main-wrapper{
+		width: 85%;
+	}
+
+	.section-photo__create-btn{
+		width: 85%;
+	}
+
+	.file-input{
+		width: 85%;
+	}
+}

@@ -1,0 +1,55 @@
+@import 'delete-button/delete-button.css';
+
+.small-gallery{
+	max-width: 80%;
+	padding: 2em 0;
+	margin: 0 auto;
+
+	display:  flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+}
+
+.small-gallery__back-button{
+  display: none;
+
+  position: fixed;
+  top: 1rem;
+  right: 1.2rem;
+
+	background: var(--main-color);
+	color: #ddd !important;
+}
+
+.small-gallery__item{
+	margin: .7rem;
+	width: 15rem;
+	height: 10rem;
+	position: relative;
+
+	border-radius: 3px;
+	box-shadow: 4px 7px 15px #222;
+	overflow: hidden;
+
+	transition: transform 150ms;
+	transition-delay: 50ms;
+}
+.small-gallery__item:hover{
+	cursor: pointer;
+	transform: scale(1.02);
+}
+
+.small-gallery__photo{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.small-gallery__delete-button{
+	font-weight: bold;
+
+	position: absolute;
+	top: 0em;
+	right: 0.5em;
+}

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Design Gallery</title>
+    <meta lang="en">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <link rel="icon" href="img/logo/OwnView-icon.ico">
+    <script type="module" src="script.js"></script>
+    <script type="module" src="./js/toolbox.js"></script>
+    <script type="module" src="./gallery/gallery.js"></script>
+    <script type="module" src="./main/section-photo/control-items.js"></script>
+  </head>
+  <body class="page">
+    <div class="container">
+      <header class="header">
+        <p class="header__motto">
+          create your own gallery in a couple of clicks...
+        </p>
+        <h1 class="header__title">OwnView</h1>
+      </header>
+
+      <main class="main">
+        <section class="section-photo">
+          <p class="section-photo__title">gallery preview</p>
+
+          <div class="section-photo__wrapper">
+            <div class="section-photo__controls-wrapper">
+              <div class="file-input">
+                <p class="file-input__title">add a new photo</p>
+                <input class="file-input__input" type="file" multiple name="file">
+                <button class="btn file-input__add-btn">add</button>
+              </div>
+
+              <div class="section-photo__color-input-main-wrapper">
+                <label for="color-input">choose design color</label>
+                <div class="section-photo__color-input-wrapper">
+                  <input id="color-input" class="section-photo__color-input" type="color" value="#82a7d4">
+                  <button class="btn section-photo__ok-btn">ok</button>
+                </div>
+              </div>
+
+              <button class="btn section-photo__create-btn">create gallery</button>
+            </div>
+
+            <div class="small-gallery">
+              <div id="small-gallery-item-0" class="small-gallery__item">
+                <img id="imgC0" class="small-gallery__photo" src="img/compressed/imgC0.jpg">
+                <p id="delete-button-0" class="small-gallery__delete-button delete-button">×</p>
+              </div>
+
+              <div id="small-gallery-item-1" class="small-gallery__item">
+                <img id="imgC1" class="small-gallery__photo" src="img/compressed/imgC1.jpg">
+                <p id="delete-button-1" class="small-gallery__delete-button delete-button">×</p>
+              </div>
+
+              <div id="small-gallery-item-2" class="small-gallery__item">
+                <img id="imgC2" class="small-gallery__photo" src="img/compressed/imgC2.jpg">
+                <p id="delete-button-2" class="small-gallery__delete-button delete-button">×</p>
+              </div>
+              <button class="small-gallery__back-button btn">back</button>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <footer class="footer">
+      <p>All rights reserved. 2021</p>
+    </footer>
+
+    <div class="gallery">
+      <button class="gallery__button gallery__button_close"><span class="gallery__button_visible">X</span></button>
+
+      <div class="gallery__carousel">
+        <button id="previous" class="gallery__button gallery__button_previous"><span class="gallery__button_visible">&#60;</span></button>
+        <img class="gallery__image">
+        <button id="next" class="gallery__button gallery__button_next"><span class="gallery__button_visible">&#62;</span></button>
+      </div>
+
+      <ul class="gallery__carousel-indicators-wrapper">
+        <li class="gallery__indicator"></li>
+        <li class="gallery__indicator"></li>
+        <li class="gallery__indicator"></li>
+      </ul>
+    </div>
+  </body>
+</html>

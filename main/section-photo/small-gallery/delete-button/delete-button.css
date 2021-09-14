@@ -1,0 +1,10 @@
+.delete-button{
+  padding: 0.5em;
+
+  background-color: #000;
+  color: #f21;
+  transition: transform 150ms;
+}
+.delete-button:hover{
+  color: var(--accent-color);
+}
