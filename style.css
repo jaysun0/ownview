@@ -19,8 +19,6 @@
   --gallery-button-dark: #0007;
   --gallery-button-light: #fff7;
   --standard-border: 3px solid #000;
-
-  //queries steps
   --query-first: 700px;
 }
 
@@ -55,7 +53,7 @@ html{
   color: #000;
 	border-radius: 5px;
 	cursor: pointer;
-  transition: transform: 150ms;
+  transition: transform 150ms;
 }
 .btn:hover{
   transform: translateY(2px);
