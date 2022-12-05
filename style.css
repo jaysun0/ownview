@@ -4,22 +4,31 @@
 @import 'footer/footer.css';
 @import 'queries.css';
 
-@font-face{
+@font-face {
   font-family: 'Roboto-bold';
   src: url('fonts/Roboto-Bold.ttf');
 }
-@font-face{
+@font-face {
   font-family: 'Roboto-regular';
   src: url('fonts/Roboto-Regular.ttf');
 }
 
-:root{
+:root {
   --main-color: linear-gradient(#222b 35%, #222);
-  --accent-color: #82a7d4;
+  --accent-color: #777777;
+  --red: #f21;
+
   --gallery-button-dark: #0007;
   --gallery-button-light: #fff7;
+
+  --gray: #999;
+  --gray-light: #eee;
+  --black: #000;
+
   --standard-border: 3px solid #000;
+  --border-radius: 4px;
   --query-first: 700px;
+  --box-shadow-low: 2px 2px 3px #333;
 }
 
 * {
@@ -32,7 +41,7 @@
   color: #fff;
 }
 
-html{
+html {
   font-size: 20px;
 }
 
@@ -42,19 +51,27 @@ html{
   background-attachment: fixed;
 }
 
-.container{
+.container {
   min-height: 100vh;
 }
 
-.btn{
+.btn {
   font-size: 1rem;
 	padding: .15em .9em;
-
-  color: #000;
-	border-radius: 5px;
+	border-radius: var(--border-radius);
+  border: 2px solid var(--black);
+  
+  color: var(--black);
+  background: linear-gradient(0deg, var(--gray), var(--gray-light));
 	cursor: pointer;
-  transition: transform 150ms;
+  transition: transform 100ms;
 }
-.btn:hover{
+.btn:hover {
   transform: translateY(2px);
+  background-color: var(--gray);
 }
+
+.has-shadow {
+  box-shadow: 4px 4px 6px #333;
+}
+

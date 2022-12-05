@@ -2,7 +2,7 @@
 @import 'small-gallery/small-gallery.css';
 
 
-.section-photo__title{
+.section-photo__title {
 	padding: .3em .5em;
 	text-align: center;
 	background: var(--main-color);
@@ -10,7 +10,7 @@
 	border-bottom: var(--standard-border);
 }
 
-.section-photo__wrapper{
+.section-photo__wrapper {
 	padding: 2rem 1rem 1rem 1rem;
 	margin-bottom: 3rem;
 

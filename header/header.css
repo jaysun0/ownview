@@ -1,4 +1,4 @@
-.header{
+.header {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
@@ -6,7 +6,7 @@
   align-items: flex-start;
 }
 
-.header__title{
+.header__title {
   font-family: 'Roboto-bold';
   font-size: 3.5rem;
   margin: 0.2em;

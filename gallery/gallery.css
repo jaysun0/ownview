@@ -1,4 +1,4 @@
-.gallery{
+.gallery {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -21,7 +21,7 @@
 }
 
 /* buttons */
-.gallery__button{
+.gallery__button {
 	position: absolute;
 	font-size: 1.5rem;
 
@@ -32,34 +32,34 @@
 	color: var(--accent-color);
 	cursor: pointer;
 }
-.gallery__button_visible{
+.gallery__button_visible {
 	padding: .3rem .45rem;
 	color: var(--gallery-button-light);
 	border-radius: 3px;
 }
 
-.gallery__button:hover .gallery__button_visible{
+.gallery__button:hover .gallery__button_visible {
 	background-color: var(--gallery-button-light);
 	color: var(--gallery-button-dark);
 }
-.gallery__button:focus .gallery__button_visible{
+.gallery__button:focus .gallery__button_visible {
 	color: var(--gallery-button-light);
 	background-color: transparent;
 }
 
-.gallery__button_close{
+.gallery__button_close {
 	height: 8%;
 	width: 100%;
 	font-size: 1rem;
 }
-.gallery__button_previous{
+.gallery__button_previous {
 	height: 100%;
 	width: 10%;
 	left: 0;
 	top: 0;
 	bottom: 0;
 }
-.gallery__button_next{
+.gallery__button_next {
 	height: 100%;
 	width: 10%;
 	right: 0;
@@ -68,7 +68,7 @@
 }
 
 /* photos */
-.gallery__carousel{
+.gallery__carousel {
 	width: 100%;
 	height: 84%;
 
@@ -79,13 +79,13 @@
 	display: flex;
 	justify-content: center;
 }
-.gallery__image{
+.gallery__image {
 	width: 100%;
 	object-fit: contain;
 }
 
 /* photo indicators */
-.gallery__carousel-indicators-wrapper{
+.gallery__carousel-indicators-wrapper {
 	position: absolute;
 	bottom: 0;
 	width: 100%;
@@ -98,7 +98,7 @@
 	justify-content: center;
 	align-items: center;
 }
-.gallery__indicator{
+.gallery__indicator {
 	margin: 0 .3em;
 	width: .8rem;
 	height: .8rem;
@@ -107,7 +107,7 @@
 	border: 3px solid var(--gallery-button-dark);
 	border-radius: 50px;
 }
-.gallery__indicator.gallery__indicator-active{
+.gallery__indicator.gallery__indicator-active {
 	background: #fff;
 	border: 3px solid black;
 }

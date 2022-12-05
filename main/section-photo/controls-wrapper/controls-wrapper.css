@@ -1,4 +1,4 @@
-.section-photo__controls-wrapper{
+.section-photo__controls-wrapper {
 	display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
@@ -6,7 +6,7 @@
 	align-items: center;
 }
 
-.file-input{
+.file-input {
 	width: 90%;
 	padding: 1rem;
 
@@ -21,16 +21,20 @@
 	border: var(--standard-border);
 }
 
-.file-input__input{
+.file-input__title {
+	margin: 0 auto;
+}
+
+.file-input__input {
 	margin: 2em 0;
 	cursor: pointer;
 }
 
-.file-input__add-btn{
+.file-input__add-btn {
 	align-self: center;
 }
 
-.section-photo__color-input-main-wrapper{
+.section-photo__color-input-main-wrapper {
 	width: 90%;
 	margin: 1em 0;
 	padding: .5em 1em;
@@ -45,7 +49,7 @@
 	border-radius: 3px;
 	border: var(--standard-border);
 }
-.section-photo__color-input-wrapper{
+.section-photo__color-input-wrapper {
 	width: 100%;
 	margin-top: .5em;
 
@@ -54,10 +58,16 @@
 	justify-content: space-around;
 	align-items: center;
 }
-.section-photo__color-input{
+.section-photo__color-input {
 	width: 40%;
 }
 
-.section-photo__create-btn{
+.section-photo__create-btn {
 	width: 90%;
+}
+.section-photo__create-btn.btn {
+	transition: box-shadow 100ms, transform 100ms;
+}
+.section-photo__create-btn:hover {
+	box-shadow: var(--box-shadow-low);
 }
