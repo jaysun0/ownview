@@ -124,6 +124,9 @@ const setupEventListeners = {
       domElements.smallGallery.buttons.back.style.display = 'none'
       document.querySelector('html').style.fontSize = '20px'
     })
+    //reload when logo was pressed
+    const logo = document.querySelector('.header__title');
+    logo.addEventListener('click', () => window.location.reload());
   },
 
   gallery: function(){
