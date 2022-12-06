@@ -1,5 +1,5 @@
-import { domElements } from '../../script.js'
-import { toolbox } from '../../helpers/toolbox.js';
+import { domElements } from '../state.js'
+import toolbox from '../../components/toolbox.js';
 
 const gallery = {
   //opens the gallery
@@ -51,4 +51,4 @@ const gallery = {
   },
 }
 
-export { gallery }
+export default gallery;

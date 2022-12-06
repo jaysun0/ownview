@@ -9,7 +9,7 @@
 .header__title {
   font-size: 3rem;
   margin: 0.2em;
-  color: #fff;
+  color: var(--gray-light);
   cursor: pointer;
   text-shadow: var(--box-shadow-low);
 }

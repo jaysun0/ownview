@@ -1,4 +1,4 @@
-import { domElements } from '../script.js'
+import { domElements } from "./state.js";
 
 const toolbox = {
   //Gets only digits from photos' id
@@ -69,4 +69,4 @@ const toolbox = {
 }
 
 
-export { toolbox }
+export default toolbox;
