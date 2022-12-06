@@ -1,6 +1,6 @@
-import { gallery } from '../../gallery/gallery.js'
+import { gallery } from '../gallery/gallery.js'
 import { domElements, setupEventListeners } from '../../script.js'
-import { toolbox } from '../../js/toolbox.js'
+import { toolbox } from '../../helpers/toolbox.js'
 
 const controlItems = {
   //creates new small element in small gallery

@@ -1,5 +1,5 @@
-import { domElements } from '../script.js'
-import { toolbox } from '../js/toolbox.js'
+import { domElements } from '../../script.js'
+import { toolbox } from '../../helpers/toolbox.js';
 
 const gallery = {
   //opens the gallery

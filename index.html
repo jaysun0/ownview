@@ -7,10 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="./style.css">
     <link rel="icon" href="img/ownview-icon.ico">
-    <script type="module" src="script.js"></script>
-    <script type="module" src="./js/toolbox.js"></script>
-    <script type="module" src="./gallery/gallery.js"></script>
-    <script type="module" src="./main/section-photo/control-items.js"></script>
+    <script defer type="module" src="script.js"></script>
   </head>
   <body class="page">
     <div class="container">
@@ -29,7 +26,7 @@
             <div class="section-photo__controls-wrapper">
               <div class="file-input has-shadow">
                 <p class="file-input__title">add photos</p>
-                <input class="file-input__input" type="file" multiple name="file">
+                <input class="file-input__input" type="file" name="file" multiple>
                 <button class="btn file-input__add-btn">add</button>
               </div>
 
@@ -46,18 +43,18 @@
 
             <div class="small-gallery">
               <div id="small-gallery-item-0" class="small-gallery__item has-shadow">
-                <img id="imgC0" class="small-gallery__photo" src="img/compressed/imgC0.jpg">
-                <p id="delete-button-0" class="small-gallery__delete-button delete-button">×</p>
+                <img id="imgC0" class="small-gallery__photo" src="assets/img/compressed/imgC0.jpg">
+                <button id="delete-button-0" class="small-gallery__delete-button delete-button">×</button>
               </div>
 
               <div id="small-gallery-item-1" class="small-gallery__item has-shadow">
-                <img id="imgC1" class="small-gallery__photo" src="img/compressed/imgC1.jpg">
-                <p id="delete-button-1" class="small-gallery__delete-button delete-button">×</p>
+                <img id="imgC1" class="small-gallery__photo" src="assets/img/compressed/imgC1.jpg">
+                <button id="delete-button-1" class="small-gallery__delete-button delete-button">×</button>
               </div>
 
               <div id="small-gallery-item-2" class="small-gallery__item has-shadow">
-                <img id="imgC2" class="small-gallery__photo" src="img/compressed/imgC2.jpg">
-                <p id="delete-button-2" class="small-gallery__delete-button delete-button">×</p>
+                <img id="imgC2" class="small-gallery__photo" src="assets/img/compressed/imgC2.jpg">
+                <button id="delete-button-2" class="small-gallery__delete-button delete-button">×</button>
               </div>
               <button class="small-gallery__back-button btn has-shadow">back</button>
             </div>

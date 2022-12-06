@@ -1,9 +1,6 @@
-/************* MODULES *************/
-import { toolbox } from './js/toolbox.js'
-import { gallery } from './gallery/gallery.js'
-import { controlItems } from './main/section-photo/control-items.js'
-
-
+import { toolbox } from './helpers/toolbox.js';
+import { gallery } from './components/gallery/gallery.js';
+import { controlItems } from './components/controls-wrapper/control-items.js';
 
 /************* DOM ELEMENTS *************/
 const domElements = {
@@ -150,7 +147,7 @@ const setupEventListeners = {
 /************* INITIAL STEPS *************/
 //Initialize internal JS gallery with original-size photos
 for(let i = 0; i < domElements.images.compressed.length; i++){
-  gallery.createImage(`img/img${i}.jpg`)
+  gallery.createImage(`./assets/img/img${i}.jpg`)
 }
 
 (function(){
@@ -159,4 +156,4 @@ for(let i = 0; i < domElements.images.compressed.length; i++){
   setupEventListeners.gallery()
 })()
 
-export { domElements, setupEventListeners }
+export { domElements, setupEventListeners };

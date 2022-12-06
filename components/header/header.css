@@ -7,15 +7,11 @@
 }
 
 .header__title {
-  font-family: 'Roboto-bold';
-  font-size: 3.5rem;
+  font-size: 3rem;
   margin: 0.2em;
-
-  font-weight: bold;
   color: #fff;
-  -webkit-text-stroke-width: 2px;
-  -webkit-text-stroke-color: #000;
   cursor: pointer;
+  text-shadow: var(--box-shadow-low);
 }
 
 .header__motto {

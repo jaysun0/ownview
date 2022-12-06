@@ -1,4 +1,33 @@
-@import 'delete-button/delete-button.css';
+.section-photo__title {
+	padding: .3em .5em;
+	text-align: center;
+	background: var(--main-color);
+	border-top: var(--standard-border);
+	border-bottom: var(--standard-border);
+}
+
+.section-photo__wrapper {
+	padding: 2rem 1rem 1rem 1rem;
+	margin-bottom: 3rem;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.delete-button {
+  padding: 2px 8px;
+  font-size: 25px;
+  border-top: none;
+  border-bottom-left-radius: var(--border-radius);
+  border-bottom-right-radius: var(--border-radius);
+
+  background-color: #000;
+  transition: transform 150ms;
+}
+.delete-button:hover {
+  color: var(--red);
+}
 
 .small-gallery {
 	max-width: 80%;
@@ -58,3 +87,4 @@
 	top: 0em;
 	right: 0.5em;
 }
+
