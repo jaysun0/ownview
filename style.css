@@ -2,7 +2,6 @@
 @import 'components/gallery-preview/gallery-preview.css';
 @import 'components/gallery/gallery.css';
 @import 'components/footer/footer.css';
-@import 'components/controls-wrapper/controls-wrapper.css';
 @import 'queries.css';
 
 @font-face {

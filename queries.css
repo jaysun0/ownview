@@ -2,8 +2,6 @@
   .small-gallery__back-button{
     right: 1em;
   }
-
-  //presentaiton mode
   .gallery__button_close{
   	height: 10%;
   }
@@ -19,19 +17,19 @@
 }
 
 @media screen and (max-width: 700px){
-  .section-photo__wrapper{
+  .gallery-preview__wrapper{
 		flex-wrap: wrap;
 	}
 
-	.section-photo__controls-wrapper{
+	.gallery-preview__controls-wrapper{
 		width: 100%;
 	}
 
-	.section-photo__color-input-main-wrapper{
+	.gallery-preview__color-input-main-wrapper{
 		width: 50%;
 	}
 
-	.section-photo__create-btn{
+	.gallery-preview__create-btn{
 		margin: 1rem 0;
 		width: 50%;
 		order: 2;
@@ -42,7 +40,6 @@
 		width: 50%;
 	}
 
-  //presentaiton mode
   .gallery__button_close{
   	height: 12%;
   }
@@ -58,16 +55,16 @@
 }
 
 @media screen and (max-width: 600px){
-  .section-photo__wrapper{
+  .gallery-preview__wrapper{
 		padding: 0;
     padding-top: 2rem;
 	}
 
-	.section-photo__color-input-main-wrapper{
+	.gallery-preview__color-input-main-wrapper{
 		width: 60%;
 	}
 
-	.section-photo__create-btn{
+	.gallery-preview__create-btn{
 		width: 60%;
 	}
 
@@ -75,7 +72,6 @@
 		width: 60%;
 	}
 
-  //presentaiton mode
   .gallery__button_close{
   	height: 14%;
   }
@@ -91,11 +87,11 @@
 }
 
 @media screen and (max-width: 500px){
-	.section-photo__color-input-main-wrapper{
+	.gallery-preview__color-input-main-wrapper{
 		width: 70%;
 	}
 
-	.section-photo__create-btn{
+	.gallery-preview__create-btn{
 		width: 70%;
 	}
 
@@ -107,7 +103,6 @@
   	max-width: 100%;
   }
 
-  //presentaiton mode
   .gallery__button_close{
   	height: 16%;
   }
@@ -123,11 +118,11 @@
 }
 
 @media screen and (max-width: 400px){
-	.section-photo__color-input-main-wrapper{
+	.gallery-preview__color-input-main-wrapper{
 		width: 85%;
 	}
 
-	.section-photo__create-btn{
+	.gallery-preview__create-btn{
 		width: 85%;
 	}
 
