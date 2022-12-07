@@ -2,6 +2,7 @@
 @import 'components/gallery-preview/gallery-preview.css';
 @import 'components/gallery/gallery.css';
 @import 'components/footer/footer.css';
+@import 'components/modal/modal.css';
 @import 'queries.css';
 
 @font-face {
@@ -16,7 +17,7 @@
 
 /****** GENERAL STYLES *****/
 :root {
-  --main-color: linear-gradient(#222b 35%, #222);
+  --main-color: linear-gradient(#222b 45%, #222);
   --accent-color: #777777;
   --red: #f21;
 
@@ -26,6 +27,7 @@
   --gray: #999;
   --gray-light: #eee;
   --black: #000;
+  --transparent-dark: #0008;
 
   --standard-border: 3px solid #000;
   --border-radius: 4px;
