@@ -73,7 +73,7 @@ const listeners = {
     //add a new photo to the gallery
     domElements.fileInput.add.addEventListener('click', addItems);
     //change design color
-    domElements.galleryPreview.buttons.color.addEventListener('click', changeDesignColor);
+    domElements.galleryPreview.buttons.color.addEventListener('change', changeDesignColor);
     //create gallery
     domElements.galleryPreview.buttons.create.addEventListener('click', createGallery);
     //leave 'presentation' regimen
