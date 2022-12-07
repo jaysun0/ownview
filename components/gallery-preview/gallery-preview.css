@@ -162,17 +162,18 @@
 /* back-button */
 .gallery-preview__back-button {
   display: none;
-
   position: fixed;
   top: 1rem;
   right: 1.2rem;
-
-	background: var(--main-color);
 }
 .gallery-preview__back-button.btn {
- transition: box-shadow 100ms, transform 100ms;
+	font-size: 30px;
+	font-weight: bold;
+	padding: 5px 15px;
+ 	transition: box-shadow 100ms, transform 100ms, color 100ms;
 }
 .gallery-preview__back-button:hover{
 	box-shadow: var(--box-shadow-low);
+	color: var(--red);
 }
 

@@ -28,7 +28,7 @@ function changeDesignColor() {
 }
 
 
-function createGallery() {
+function createGallery(image) {
   state.galleryCreated = true;
   domElements.page.forEach(el => el.style.display = 'none');
   domElements.galleryPreview.buttons.back.style.display = 'block';
@@ -58,8 +58,11 @@ function leavePresentationRegimen() {
 
 
 function openGallery(item) {
-  if(state.galleryCreated === true) gallery.openGallery(item.id);
-  else alert('Push "create gallery" button to open the photos.');
+  if(state.galleryCreated) gallery.openGallery(item.id);
+  else {
+    createGallery();
+    gallery.openGallery(item.id);
+  }
 }
 
 
