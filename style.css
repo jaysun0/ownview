@@ -83,3 +83,7 @@ button {
   box-shadow: 4px 4px 6px #333;
 }
 
+.closed {
+  display: none;
+}
+

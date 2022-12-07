@@ -2,6 +2,7 @@ import state, { domElements } from './state.js';
 import gallery from './gallery/gallery.js';
 import toolbox from '../components/toolbox.js';
 import { controlItems } from './gallery-preview/gallery-preview.js';
+import { showMessage } from './modal/modal.js';
 
 /************* Gallery Actions *************/
 function addItems(){
@@ -10,11 +11,12 @@ function addItems(){
   
   if(number > 0){
     for(let i = 0; i < number; i++) controlItems.addNewItem(newPhotos[i]);
-  } else alert('Please add an image.')
+  } else showMessage('Choose one or multiple images from your device to add to the gallery.');
 }
 
 
 function deleteItem(event) {
+  state.itemsCount--;
   event.stopPropagation();
   controlItems.deleteItem(toolbox.getIdNumber(event.target.id));
 }
@@ -29,14 +31,16 @@ function changeDesignColor() {
 
 
 function createGallery(image) {
-  state.galleryCreated = true;
-  domElements.page.forEach(el => el.style.display = 'none');
-  domElements.galleryPreview.buttons.back.style.display = 'block';
-  domElements.galleryPreview.preview.style.maxWidth = '100%';
-  document.querySelectorAll('.delete-button').forEach(item => {
-    item.style.top = '1em';
-    item.style.zIndex = '-1';
-  });
+  if (state.itemsCount > 0) {
+    state.galleryCreated = true;
+    domElements.page.forEach(el => el.style.display = 'none');
+    domElements.galleryPreview.buttons.back.style.display = 'block';
+    domElements.galleryPreview.preview.style.maxWidth = '100%';
+    document.querySelectorAll('.delete-button').forEach(item => {
+      item.style.top = '1em';
+      item.style.zIndex = '-1';
+    });
+  } else showMessage('To create gallery you need to add some images. On the left there is a file-input to do that. You can add one or multiple files at once.');
 }
 
 
@@ -73,7 +77,7 @@ const listeners = {
     //add a new photo to the gallery
     domElements.fileInput.add.addEventListener('click', addItems);
     //change design color
-    domElements.galleryPreview.buttons.color.addEventListener('change', changeDesignColor);
+    domElements.galleryPreview.buttons.color.addEventListener('click', changeDesignColor);
     //create gallery
     domElements.galleryPreview.buttons.create.addEventListener('click', createGallery);
     //leave 'presentation' regimen
@@ -81,6 +85,7 @@ const listeners = {
   },
 
   setupGalleryPreviewItem(item) {
+    state.itemsCount++;
     item.addEventListener('click', () => openGallery(item));
     //delete item
     const deleteButton = item.children[1];

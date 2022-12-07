@@ -2,6 +2,7 @@ import toolbox from '../toolbox.js';
 import gallery from '../gallery/gallery.js';
 import { listeners } from '../events.js';
 import { domElements } from '../state.js';
+import { showMessage } from '../modal/modal.js';
 
 const controlItems = {
   //creates new item in gallery-preview
@@ -33,26 +34,30 @@ const controlItems = {
 
   //Add new item to the app
   addNewItem: function(photo){
-    const reader = new FileReader();
+    const regExp = new RegExp(/(jpe*g|png|svg|heic|ico|gif)$/, 'i');
+    if (photo.name.match(regExp)) {
+      const reader = new FileReader();
     
-    //compresses the image and adds to small gallery
-    this.compressImage(photo, 1);
-
-    //creates new gallery indicator
-    const createNewIndicator = function(){
-      const newIndicator = document.createElement('li');
-      newIndicator.classList.add('gallery__indicator');
-      domElements.gallery.indicators.appendChild(newIndicator);
-    }
-
-    //reader's work
-    reader.onload = () => {
-      gallery.createImage(reader.result);
-      createNewIndicator();
-      domElements.fileInput.input.value = '';
-    }
-    reader.onerror = () => alert(`Cant't read the file. Are you sure it's an image?`);
-    reader.readAsDataURL(photo);
+      //compresses the image and adds to small gallery
+      this.compressImage(photo, 1);
+  
+      //creates new gallery indicator
+      const createNewIndicator = function(){
+        const newIndicator = document.createElement('li');
+        newIndicator.classList.add('gallery__indicator');
+        domElements.gallery.indicators.appendChild(newIndicator);
+      }
+  
+      //reader's work
+      reader.onload = () => {
+        gallery.createImage(reader.result);
+        createNewIndicator();
+        domElements.fileInput.input.value = '';
+      }
+      reader.onerror = () => showMessage(`An error occured while reading the provided file... Are you sure it's an image?`);
+      reader.readAsDataURL(photo);
+    } else showMessage(`The provided file must be one of the following formats: "jpg", "jpeg", "png", "svg", "ico", "heic", 
+    "gif"`);
   },
 
   //compresses image

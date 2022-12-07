@@ -1,5 +1,6 @@
 const state = {
   galleryCreated: false,
+  itemsCount: 0,
 };
 
 /************* DOM ELEMENTS *************/
@@ -22,7 +23,7 @@ const domElements = {
     items: document.querySelectorAll(`.gallery-preview__item`),
     buttons: {
       delete: document.querySelectorAll('.gallery-preview__delete-button'),
-      color: document.querySelector('.gallery-preview__ok-btn'),
+      color: document.querySelector('.gallery-preview__color-btn'),
       create: document.querySelector('.gallery-preview__create-btn'),
       back: document.querySelector('.gallery-preview__back-button'),
     },
@@ -42,6 +43,12 @@ const domElements = {
         document.querySelector('.gallery__button_next')
       ]
     }
+  },
+
+  modal: {
+    wrapper: document.querySelector('.modal__wrapper'),
+    text: document.querySelector('.modal__text'),
+    closeBtn: document.querySelector('.modal__close-btn'),
   },
 
   images: {
