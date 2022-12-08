@@ -1,59 +1,60 @@
 import toolbox from '../toolbox.js';
 import gallery from '../gallery/gallery.js';
-import { listeners } from '../events.js';
-import { domElements } from '../state.js';
+import { listeners, setupIndicator } from '../events.js';
+import state, { domElements } from '../state.js';
 import { showMessage } from '../modal/modal.js';
 
 const controlItems = {
   //creates new item in gallery-preview
-  createNewItem: function(image){
-    const number = domElements.images.compressed.length;
-
+  createNewItem: function(image, idNumber){
     //item in gallery-preview
     const newGalleryPreviewItem = domElements.galleryPreview.preview.appendChild(document.createElement('div'));
-    newGalleryPreviewItem.id = `gallery-preview-item-${number}`;
+    newGalleryPreviewItem.id = `gallery-preview-item-${idNumber}`;
     newGalleryPreviewItem.classList.add('gallery-preview__item', 'has-shadow');
 
     //photo itself(compressed)
     const newPhotoElement = newGalleryPreviewItem.appendChild(document.createElement('img'))
-    newPhotoElement.id = `imgC${number}`;
+    newPhotoElement.id = `imgC${idNumber}`;
     newPhotoElement.classList.add('gallery-preview__photo');
     newPhotoElement.src = image.src;
     domElements.images.compressed.push(document.getElementById(newPhotoElement.id));
 
     //delete button
     const deleteButton = newGalleryPreviewItem.appendChild(document.createElement('p'));
-    deleteButton.id = `delete-button-${number}`;
-    deleteButton.classList.add('gallery-preview__delete-button', 'delete-button');
+    deleteButton.id = `delete-button-${idNumber}`;
+    deleteButton.classList.add('gallery-preview__delete-button', 'delete-button', 'btn');
     deleteButton.textContent = '×';
-    
-    //event listeners for the item
     listeners.setupGalleryPreviewItem(newGalleryPreviewItem);
+    
     return newPhotoElement
   },
 
   //Add new item to the app
-  addNewItem: function(photo){
+  addNewItem: function(photo, idNumber){
     const regExp = new RegExp(/(jpe*g|png|svg|heic|ico|gif)$/, 'i');
+
     if (photo.name.match(regExp)) {
       const reader = new FileReader();
     
-      //compresses the image and adds to small gallery
-      this.compressImage(photo, 1);
+      //compresses the image and then adds to small gallery
+      this.compressImage(photo, 1, idNumber);
   
       //creates new gallery indicator
-      const createNewIndicator = function(){
+      const createNewIndicator = () => {
         const newIndicator = document.createElement('li');
         newIndicator.classList.add('gallery__indicator');
-        domElements.gallery.indicators.appendChild(newIndicator);
+        newIndicator.id = `indicator-${idNumber}`;
+        setupIndicator(newIndicator, idNumber);
+        domElements.gallery.indicators.append(newIndicator);
       }
   
       //reader's work
       reader.onload = () => {
-        gallery.createImage(reader.result);
+        gallery.createImage(reader.result, idNumber);
         createNewIndicator();
         domElements.fileInput.input.value = '';
       }
+      
       reader.onerror = () => showMessage(`An error occured while reading the provided file... Are you sure it's an image?`);
       reader.readAsDataURL(photo);
     } else showMessage(`The provided file must be one of the following formats: "jpg", "jpeg", "png", "svg", "ico", "heic", 
@@ -61,7 +62,7 @@ const controlItems = {
   },
 
   //compresses image
-  compressImage: function(originalImage, quality){
+  compressImage: function(originalImage, quality, idNumber){
     const parent = this;
     const reader = new FileReader();
     let compressedImage;
@@ -79,35 +80,29 @@ const controlItems = {
         ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
         compressedImage = new Image();
         compressedImage.src = canvas.toDataURL('image/jpeg', quality);
-        parent.createNewItem(compressedImage);
+        parent.createNewItem(compressedImage, idNumber);
       }
     }
 
     if(originalImage) reader.readAsDataURL(originalImage);
-    else alert(`No image was detected...\nTry once more, please.`);
+    else showMessage('No image was detected... Try once more, please.');
   },
 
 
   //Delete an item from the app
   deleteItem: function(idNumber){
     //update data about images
-    domElements.images.compressed.splice(idNumber, 1);
-    domElements.images.original.splice(idNumber, 1);
+    const index = domElements.images.original.findIndex(image => {
+      return toolbox.getIdNumber(image.id) === idNumber;
+    });
+
+    domElements.images.compressed.splice(index, 1);
+    domElements.images.original.splice(index, 1);
 
     //delete items from the UI
-    domElements.galleryPreview.preview.removeChild(document.querySelectorAll(`.gallery-preview__item`)[idNumber]);
-    domElements.gallery.indicators.removeChild(document.querySelector('.gallery__indicator'));
-
-    //set images numbers according to the new order
-    toolbox.normaliseCounters(domElements.images.compressed);
-    toolbox.normaliseCounters(domElements.images.original);
-    toolbox.normaliseCounters(document.querySelectorAll('.gallery-preview__item'));
-
-    //setting "delete-button"s ids the same as "gallery-preview-item"s ids
-    document.querySelectorAll('.gallery-preview__item').forEach(curElem => {
-      const id = toolbox.getIdNumber(curElem.children[0].id);
-      curElem.children[1].id = `delete-button-${id}`;
-    });
+    const previewItem = document.getElementById(`gallery-preview-item-${idNumber}`);
+    toolbox.getIndicatorElement(idNumber).remove();
+    previewItem.remove();
   },
 }
 

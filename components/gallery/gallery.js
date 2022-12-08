@@ -1,53 +1,64 @@
-import { domElements } from '../state.js'
 import toolbox from '../../components/toolbox.js';
+import state, { domElements } from '../state.js';
 
 const gallery = {
   //opens the gallery
   openGallery: function(imageId){
     scroll(0,0)
-    document.querySelector('body').style.overflowY = 'hidden'
-    domElements.gallery.gallery.style.display = 'block'
-    domElements.gallery.image.src = toolbox.findSourceById(imageId)
-    domElements.gallery.image.id = `${toolbox.getIdNumber(imageId)}`
-    domElements.gallery.indicators.children[parseInt(toolbox.getIdNumber(imageId))].classList.toggle('gallery__indicator-active')
+    document.querySelector('body').style.overflowY = 'hidden';
+    domElements.gallery.gallery.style.display = 'block';
+    domElements.gallery.image.src = toolbox.findSourceById(imageId);
+    domElements.gallery.image.id = `img${toolbox.getIdNumber(imageId)}`;
+
+    const idNumber = toolbox.getIdNumber(imageId);
+    this.setIndicator(idNumber);
   },
 
   //closes the gallery
   closeGallery: function(){
-    domElements.gallery.gallery.style.display = 'none'
-    Array.prototype.forEach.call(domElements.gallery.indicators.children, function(c){
-      if(c.classList.contains('gallery__indicator-active')) c.classList.remove('gallery__indicator-active')
-    })
-    document.querySelector('body').style.overflowY = 'scroll'
+    domElements.gallery.gallery.style.display = 'none';
+    domElements.gallery.indicators
+    document.querySelector('body').style.overflowY = 'scroll';
+  },
+
+  setIndicator(id) {
+    const activeIndicator = toolbox.getIndicatorElement(state.activeIndicatorId);
+    activeIndicator && activeIndicator.classList.remove('gallery__indicator_active');
+    toolbox.getIndicatorElement(id).classList.add('gallery__indicator_active');
+    state.activeIndicatorId = id;
   },
 
   //flips through the gallery
   flipThrough: function(direction){
-    let nextImageIdNumber, nextImageId
-    const currentImageIdNumber = toolbox.getIdNumber(domElements.gallery.image.id)
+
+    const images = [...domElements.images.original];
+    const currentImageIndex = images.findIndex(image => image.src === domElements.gallery.image.src);
+    let nextImageId, nextImageIndex;
+
     switch(direction){
       case 'next':
-        nextImageIdNumber = currentImageIdNumber >= domElements.images.original.length - 1 ? 0 : currentImageIdNumber + 1
-      break
+        nextImageIndex = (currentImageIndex + 1) >= images.length ? 0 : (currentImageIndex + 1);
+        nextImageId = images[nextImageIndex].id;
+      break;
       case 'previous':
-        nextImageIdNumber = currentImageIdNumber < 1 ? domElements.images.original.length - 1 : currentImageIdNumber - 1
-      break
-      default: gallery.closeGallery()
+        nextImageIndex = (currentImageIndex - 1) < 0 ? (images.length - 1) : (currentImageIndex - 1);
+        nextImageId = images[nextImageIndex].id;
+      break;
+      default: gallery.closeGallery();
     }
-    nextImageId = `img${nextImageIdNumber}`
-    domElements.gallery.image.src = toolbox.findSourceById(nextImageId)
-    domElements.gallery.image.id = nextImageId
-    domElements.gallery.indicators.children[currentImageIdNumber].classList.toggle('gallery__indicator-active')
-    domElements.gallery.indicators.children[nextImageIdNumber].classList.toggle('gallery__indicator-active')
+
+    domElements.gallery.image.src = toolbox.findSourceById(nextImageId);
+    domElements.gallery.image.id = nextImageId;
+    this.setIndicator(toolbox.getIdNumber(nextImageId));
   },
 
   //creates instance of an original-size photo
-  createImage: function(source){
-    const image = new Image()
-    image.src = source
-    image.id = `img${domElements.images.original.length}`
-    domElements.images.original.push(image)
-    image.style.display = 'none'
+  createImage: function(source, idNumber){;
+    const image = new Image();
+    image.src = source;
+    image.id = `img${idNumber}`;
+    domElements.images.original.push(image);
+    image.style.display = 'none';
   },
 }
 

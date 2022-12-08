@@ -10,10 +10,16 @@ function addItems(){
   const number = newPhotos.length;
   
   if(number > 0){
-    for(let i = 0; i < number; i++) controlItems.addNewItem(newPhotos[i]);
+    for(let i = 0; i < number; i++) controlItems.addNewItem(newPhotos[i], ++state.itemsCount);
   } else showMessage('Choose one or multiple images from your device to add to the gallery.');
 }
 
+function setupIndicator(indicator, id) {
+  indicator.addEventListener('click', () => {
+    gallery.openGallery(`gallery-preview-item-${id}`);
+    gallery.setIndicator(id);
+  });
+}
 
 function deleteItem(event) {
   state.itemsCount--;
@@ -30,7 +36,7 @@ function changeDesignColor() {
 }
 
 
-function createGallery(image) {
+function createGallery() {
   if (state.itemsCount > 0) {
     state.galleryCreated = true;
     domElements.page.forEach(el => el.style.display = 'none');
@@ -85,7 +91,6 @@ const listeners = {
   },
 
   setupGalleryPreviewItem(item) {
-    state.itemsCount++;
     item.addEventListener('click', () => openGallery(item));
     //delete item
     const deleteButton = item.children[1];
@@ -99,7 +104,10 @@ const listeners = {
     //flip through gallery
     domElements.gallery.btns.flip.forEach(currentBtn => currentBtn.addEventListener('click', function(){
       gallery.flipThrough(currentBtn.id);
-    }))
+    }));
+
+    //open image via indicator
+    [...domElements.gallery.indicators.children].forEach((indicator, index) => setupIndicator(indicator, index));
 
     //keyboard keys to control gallery
     document.addEventListener('keydown', (e) => {
@@ -118,5 +126,5 @@ function setupEventListeners(){
   listeners.setupGallery();
 };
 
-export { listeners };
+export { listeners, setupIndicator };
 export default setupEventListeners;

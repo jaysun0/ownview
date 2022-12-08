@@ -3,28 +3,22 @@ import { domElements } from "./state.js";
 const toolbox = {
   //Gets only digits from photos' id
   getIdNumber: function(id){
-     return parseInt(id.match(/\d{1,3}/)[0])
-  },
-
-  //Puts ids in order after deleting some items
-  normaliseCounters: function(array){
-    const newArray = []
-    array.forEach(c => {
-      if(c.id) newArray.push(c)
-    })
-    for(let i = 0; i < newArray.length; i++){
-      newArray[i].id = `${newArray[i].id.match(/\D*/)[0]}${i}`
-    }
+    return parseInt(id.match(/\d*$/));
   },
 
   //finds 'src' attribute value of an original-size photo
   findSourceById: function(imageId){
     let attribute
-    const newId = `img${toolbox.getIdNumber(imageId)}`
-    domElements.images.original.forEach(c =>{
-      if(c.id === newId) attribute = c.src
-    })
+    const newId = `img${this.getIdNumber(imageId)}`
+    domElements.images.original.forEach(image =>{
+      if(image.id === newId) attribute = image.src;
+    });
     return attribute
+  },
+
+  //finds indicator-element
+  getIndicatorElement(idNumber) {
+    return document.getElementById(`indicator-${idNumber}`);
   },
 
   //Finds image ratio and defines it's compression parameters

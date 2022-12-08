@@ -1,6 +1,7 @@
 const state = {
   galleryCreated: false,
   itemsCount: 0,
+  activeIndicatorId: 0,
 };
 
 /************* DOM ELEMENTS *************/
