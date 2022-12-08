@@ -5,6 +5,8 @@ const state = {
 
 /************* DOM ELEMENTS *************/
 const domElements = {
+  body: document.querySelector('body'),
+
   //elements to be hidden when user turns on gallery mode
   page: [
       document.querySelector('.header'),
