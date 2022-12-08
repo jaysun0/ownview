@@ -145,21 +145,21 @@
 	position: absolute;
 	top: 0em;
 	right: 0.5em;
-	border: 1px solid var(--gray-light);
 }
 
 .delete-button {
   padding: 2px 8px;
   font-size: 25px;
   border-top: none;
-  border-bottom-left-radius: var(--border-radius);
-  border-bottom-right-radius: var(--border-radius);
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
 
   background-color: #000;
   transition: transform 150ms;
 }
 .delete-button:hover {
   color: var(--red);
+	transform: none;
 }
 
 

@@ -9,7 +9,7 @@
     <link rel="icon" href="./assets/img/ownview-icon.ico">
     <script defer type="module" src="script.js"></script>
   </head>
-  <body class="page">
+  <body>
     <div class="container">
       <header class="header">
         <p class="header__motto">
@@ -44,17 +44,17 @@
             <div class="gallery-preview__items">
               <div id="gallery-preview-item-0" class="gallery-preview__item has-shadow">
                 <img id="imgC0" class="gallery-preview__photo" src="assets/img/compressed/imgC0.jpg">
-                <button id="delete-button-0" class="gallery-preview__delete-button delete-button">×</button>
+                <button id="delete-button-0" class="btn gallery-preview__delete-button delete-button">×</button>
               </div>
 
               <div id="gallery-preview-item-1" class="gallery-preview__item has-shadow">
                 <img id="imgC1" class="gallery-preview__photo" src="assets/img/compressed/imgC1.jpg">
-                <button id="delete-button-1" class="gallery-preview__delete-button delete-button">×</button>
+                <button id="delete-button-1" class="btn gallery-preview__delete-button delete-button">×</button>
               </div>
 
               <div id="gallery-preview-item-2" class="gallery-preview__item has-shadow">
                 <img id="imgC2" class="gallery-preview__photo" src="assets/img/compressed/imgC2.jpg">
-                <button id="delete-button-2" class="gallery-preview__delete-button delete-button">×</button>
+                <button id="delete-button-2" class="btn gallery-preview__delete-button delete-button">×</button>
               </div>
               <button class="gallery-preview__back-button btn has-shadow">×</button>
             </div>
@@ -68,19 +68,21 @@
     </footer>
 
     <div class="gallery">
-      <button class="gallery__button gallery__button_close"><span class="gallery__button_visible">X</span></button>
+      <button class="gallery__button gallery__button_close">x</button>
 
       <div class="gallery__carousel">
-        <button id="previous" class="gallery__button gallery__button_previous"><span class="gallery__button_visible">&#60;</span></button>
+        <button id="previous" class="gallery__button gallery__button_previous"><</button>
         <img class="gallery__image">
-        <button id="next" class="gallery__button gallery__button_next"><span class="gallery__button_visible">&#62;</span></button>
+        <button id="next" class="gallery__button gallery__button_next">></button>
       </div>
 
-      <ul class="gallery__carousel-indicators-wrapper">
-        <li class="gallery__indicator"></li>
-        <li class="gallery__indicator"></li>
-        <li class="gallery__indicator"></li>
-      </ul>
+      <div class="gallery__carousel-indicators">
+        <ul class="gallery__carousel-indicators-list">
+          <li class="gallery__indicator"></li>
+          <li class="gallery__indicator"></li>
+          <li class="gallery__indicator"></li>
+        </ul>
+      </div>
     </div>
 
     <div class="modal__wrapper closed">

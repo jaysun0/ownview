@@ -11,6 +11,9 @@
 
   background: var(--transparent-dark);
 }
+.modal__wrapper.closed {
+  display: none;
+}
 
 .modal {
   width: 100%;

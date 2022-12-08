@@ -23,48 +23,43 @@
 /* buttons */
 .gallery__button {
 	position: absolute;
-	font-size: 1.5rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 
 	font-weight: bold;
+	font-size: 1.5rem;
 	border: none;
 
 	background: transparent;
-	color: var(--accent-color);
+	color: var(--white);
 	cursor: pointer;
-}
-.gallery__button_visible {
-	padding: .3rem .45rem;
-	color: var(--gallery-button-light);
-	border-radius: 3px;
+	text-shadow: 2px 2px 2px var(--black);
+	transition: 0ms;
 }
 
-.gallery__button:hover .gallery__button_visible {
-	background-color: var(--gallery-button-light);
-	color: var(--gallery-button-dark);
-}
-.gallery__button:focus .gallery__button_visible {
-	color: var(--gallery-button-light);
-	background-color: transparent;
+.gallery__button:hover {
+	font-size: 2.5rem;
 }
 
 .gallery__button_close {
 	height: 8%;
 	width: 100%;
-	font-size: 1rem;
 }
-.gallery__button_previous {
-	height: 100%;
-	width: 10%;
-	left: 0;
-	top: 0;
-	bottom: 0;
-}
+
+.gallery__button_previous,
 .gallery__button_next {
 	height: 100%;
 	width: 10%;
-	right: 0;
-	top: 0;
-	bottom: 0;
+	top: 0px;
+	bottom: 0px;
+}
+
+.gallery__button_previous {
+	left: 0px;
+}
+.gallery__button_next {
+	right: 0px;
 }
 
 /* photos */
@@ -85,29 +80,38 @@
 }
 
 /* photo indicators */
-.gallery__carousel-indicators-wrapper {
+.gallery__carousel-indicators {
 	position: absolute;
 	bottom: 0;
 	width: 100%;
 	height: 8%;
 
-	list-style: none;
-	font-weight: bold;
-
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
-.gallery__indicator {
-	margin: 0 .3em;
-	width: .8rem;
-	height: .8rem;
+.gallery__carousel-indicators-list {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
 
-	background: var(--gallery-button-light);
-	border: 3px solid var(--gallery-button-dark);
-	border-radius: 50px;
+	padding: 10px 20px;
+	border-radius: var(--border-radius);
+
+	list-style: none;
+	font-weight: bold;
+}
+
+.gallery__indicator {
+	width: 20px;
+	height: 15px;
+
+	background-color: var(--black);
+	border: 2px solid var(--white);
+	border-radius: var(--border-radius);
+	box-shadow: var(--box-shadow-low);
 }
 .gallery__indicator.gallery__indicator-active {
-	background: #fff;
-	border: 3px solid black;
+	background-color: var(--white);
 }

@@ -1,9 +1,10 @@
+@import 'assets/styles/general.css';
 @import 'components/header/header.css';
 @import 'components/gallery-preview/gallery-preview.css';
 @import 'components/gallery/gallery.css';
 @import 'components/footer/footer.css';
 @import 'components/modal/modal.css';
-@import 'queries.css';
+@import 'assets/styles/queries.css';
 
 @font-face {
   font-family: 'Roboto-bold';
@@ -12,83 +13,5 @@
 @font-face {
   font-family: 'Roboto-regular';
   src: url('assets/fonts/Roboto-Regular.ttf');
-}
-
-
-/****** GENERAL STYLES *****/
-:root {
-  --main-color: linear-gradient(#222b 45%, #222);
-  --accent-color: #777777;
-  --red: #f21;
-
-  --gallery-button-dark: #0007;
-  --gallery-button-light: #fff7;
-
-  --gray: #999;
-  --gray-light: #eee;
-  --black: #000;
-  --transparent-dark: #0008;
-
-  --standard-border: 3px solid #000;
-  --border-radius: 4px;
-  --query-first: 700px;
-  --box-shadow-low: 2px 2px 3px #333;
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-  scroll-behavior: smooth;
-
-  font-family: 'Roboto-regular', sans-serif;
-  color: #fff;
-}
-
-html {
-  font-size: 20px;
-}
-
-button {
-  cursor: pointer;
-}
-
-.page {
-  margin: 0 auto;
-  background: var(--accent-color);
-  background-attachment: fixed;
-}
-
-.container {
-  min-height: 100vh;
-}
-
-.btn {
-  font-size: 1rem;
-	padding: .15em .9em;
-	border-radius: var(--border-radius);
-  border: 2px solid var(--black);
-  
-  color: var(--black);
-  background: linear-gradient(0deg, var(--gray), var(--gray-light));
-	cursor: pointer;
-  transition: transform 100ms;
-}
-.btn:hover {
-  transform: translateY(2px);
-  background-color: var(--gray);
-}
-
-.has-shadow {
-  box-shadow: 4px 4px 6px #333;
-}
-
-.closed {
-  display: none;
-}
-
-.stop-scrolling {
-  height: 100%;
-  overflow: hidden;
 }
 
