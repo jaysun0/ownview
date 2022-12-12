@@ -4,9 +4,10 @@ import state, { domElements } from '../state.js';
 const gallery = {
   //opens the gallery
   openGallery: function(imageId){
-    scroll(0,0)
-    document.querySelector('body').style.overflowY = 'hidden';
-    domElements.gallery.gallery.style.display = 'block';
+    const gallery = domElements.gallery.gallery;
+    gallery.style.transform = `translateY(${scrollY}px)`;
+    gallery.classList.add('stop-scrolling');
+    gallery.style.display = 'block';
     domElements.gallery.image.src = toolbox.findSourceById(imageId);
     domElements.gallery.image.id = `img${toolbox.getIdNumber(imageId)}`;
 
@@ -16,9 +17,9 @@ const gallery = {
 
   //closes the gallery
   closeGallery: function(){
-    domElements.gallery.gallery.style.display = 'none';
-    domElements.gallery.indicators
-    document.querySelector('body').style.overflowY = 'scroll';
+    const gallery = domElements.gallery.gallery;
+    gallery.classList.remove('stop-scrolling');
+    gallery.style.display = 'none';
   },
 
   setIndicator(id) {

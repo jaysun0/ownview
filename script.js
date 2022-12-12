@@ -13,7 +13,6 @@ setupEventListeners();
 
 /* TO BE DONE:
 
-* fix: opens not right image
 * indicators for lots of photos
 * adaptive
 * back-btn adaptive
