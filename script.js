@@ -13,13 +13,13 @@ setupEventListeners();
 
 /* TO BE DONE:
 
+* add "clear all" button
+* overall refactoring
+* adding photos loader
 * indicators for lots of photos
 * adaptive
-* back-btn adaptive
-* adding photos loader
-* add "clear all" button
-* gallery opens on user scrollY
-* overall refactoring
+* add apps description
+* add contacts
 
 */
 

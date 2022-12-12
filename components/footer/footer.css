@@ -1,13 +1,13 @@
 .footer {
-  font-size: .75rem;
-  height: 3rem;
   width: 100%;
-  margin-top: -3rem;
-
-  background: var(--main-color);
+  height: 3rem;
+  margin-top: auto;
+  font-size: .75rem;
 
   display: flex;
   justify-content: center;
   align-items: center;
+
   border-top: var(--standard-border);
+  background: var(--main-color);
 }

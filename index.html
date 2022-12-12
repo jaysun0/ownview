@@ -22,20 +22,25 @@
         <section class="gallery-preview">
           <p class="gallery-preview__title">gallery preview</p>
 
-          <div class="gallery-preview__wrapper">
+          <div class="gallery-preview__main-wrapper">
             <div class="gallery-preview__controls-wrapper">
-              <div class="file-input has-shadow">
-                <p class="file-input__title">add image/s</p>
+              <div class="gallery-preview__wrapper file-input has-shadow">
+                <p class="gallery-preview__label">add image/s</p>
                 <input class="file-input__input" type="file" name="file" multiple>
                 <button class="btn file-input__add-btn">add</button>
               </div>
 
-              <div class="gallery-preview__color-input-main-wrapper has-shadow">
-                <label for="color-input">change design color</label>
+              <div class="gallery-preview__wrapper has-shadow">
+                <label class="gallery-preview__label" for="color-input">change design color</label>
                 <div class="gallery-preview__color-input-wrapper">
                   <input id="color-input" class="gallery-preview__color-input" type="color" value="#777777">
                   <button class="btn gallery-preview__color-btn">change</button>
                 </div>
+              </div>
+
+              <div class="gallery-preview__wrapper has-shadow">
+                <p class="gallery-preview__label">delete all images</p>
+                <button class="btn gallery-preview__color-btn">delete</button>
               </div>
 
               <button class="btn gallery-preview__create-btn has-shadow">create gallery</button>
@@ -61,11 +66,10 @@
           </div>
         </section>
       </main>
+      <footer class="footer">
+        <p>All rights reserved. 2021</p>
+      </footer>
     </div>
-
-    <footer class="footer">
-      <p>All rights reserved. 2021</p>
-    </footer>
 
     <div class="gallery">
       <button class="gallery__button gallery__button_close">x</button>
