@@ -38,7 +38,7 @@ const domElements = {
   gallery: {
     gallery: document.querySelector('.gallery'),
     image: document.querySelector('.gallery__image'),
-    indicators: document.querySelector('.gallery__carousel-indicators-list'),
+    indicators: document.querySelector('.gallery__indicators-list'),
     btns: {
       close: document.querySelector('.gallery__button_close'),
       flip: [
