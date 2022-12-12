@@ -102,8 +102,8 @@
 }
 
 
-/* delete-button */
-.gallery-preview__delete-button {
+/* delete-btn */
+.gallery-preview__delete-btn {
 	font-weight: bold;
 
 	position: absolute;
@@ -111,7 +111,7 @@
 	right: 0.5em;
 }
 
-.delete-button {
+.delete-btn {
   padding: 2px 8px;
   font-size: 25px;
   border-top: none;
@@ -121,26 +121,26 @@
   background-color: #000;
   transition: transform 150ms;
 }
-.delete-button:hover {
+.delete-btn:hover {
   color: var(--red);
 	transform: none;
 }
 
 
 /* back-button */
-.gallery-preview__back-button {
+.gallery-preview__back-btn {
   display: none;
   position: fixed;
   top: 1rem;
   right: 1.2rem;
 }
-.gallery-preview__back-button.btn {
+.gallery-preview__back-btn.btn {
 	font-size: 30px;
 	font-weight: bold;
 	padding: 5px 15px;
  	transition: box-shadow 100ms, transform 100ms, color 100ms;
 }
-.gallery-preview__back-button:hover{
+.gallery-preview__back-btn:hover{
 	box-shadow: var(--box-shadow-low);
 	color: var(--red);
 }

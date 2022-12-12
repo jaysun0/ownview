@@ -21,10 +21,15 @@ function setupIndicator(indicator, id) {
   });
 }
 
-function deleteItem(event) {
+function deleteItem(id) {
   state.itemsCount--;
-  event.stopPropagation();
-  controlItems.deleteItem(toolbox.getIdNumber(event.target.id));
+  controlItems.deleteItem(toolbox.getIdNumber(id));
+}
+
+function deleteAllItems() {
+  const imageIds = domElements.images.compressed.map(image => image.id);
+  imageIds.forEach(id => deleteItem(id));
+  showMessage('All images were deleted.');
 }
 
 
@@ -42,7 +47,7 @@ function createGallery() {
     domElements.page.forEach(el => el.style.display = 'none');
     domElements.galleryPreview.buttons.back.style.display = 'block';
     domElements.galleryPreview.preview.style.maxWidth = '100%';
-    document.querySelectorAll('.delete-button').forEach(item => {
+    document.querySelectorAll('.delete-btn').forEach(item => {
       item.style.top = '1em';
       item.style.zIndex = '-1';
     });
@@ -58,7 +63,7 @@ function leavePresentationRegimen() {
     else el.style.display = 'block'
   });
 
-  document.querySelectorAll('.delete-button').forEach(item => {
+  document.querySelectorAll('.delete-btn').forEach(item => {
     item.style.top = '0'
     item.style.zIndex = '0'
   });
@@ -84,6 +89,8 @@ const listeners = {
     domElements.fileInput.add.addEventListener('click', addItems);
     //change design color
     domElements.galleryPreview.buttons.color.addEventListener('click', changeDesignColor);
+    //delete all images
+    domElements.galleryPreview.buttons.deleteAll.addEventListener('click', deleteAllItems);
     //create gallery
     domElements.galleryPreview.buttons.create.addEventListener('click', createGallery);
     //leave 'presentation' regimen
@@ -94,7 +101,10 @@ const listeners = {
     item.addEventListener('click', () => openGallery(item));
     //delete item
     const deleteButton = item.children[1];
-    deleteButton.addEventListener('click', (event) => deleteItem(event));
+    deleteButton.addEventListener('click', (event) => {
+      event.stopPropagation();
+      deleteItem(event.target.id);
+    });
   },
 
   setupGallery(){

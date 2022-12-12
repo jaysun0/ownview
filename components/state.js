@@ -25,10 +25,11 @@ const domElements = {
     preview: document.querySelector('.gallery-preview__items'),
     items: document.querySelectorAll(`.gallery-preview__item`),
     buttons: {
-      delete: document.querySelectorAll('.gallery-preview__delete-button'),
+      deleteAll: document.querySelector('.gallery-preview__delete-all-btn'),
+      delete: document.querySelectorAll('.gallery-preview__delete-btn'),
       color: document.querySelector('.gallery-preview__color-btn'),
       create: document.querySelector('.gallery-preview__create-btn'),
-      back: document.querySelector('.gallery-preview__back-button'),
+      back: document.querySelector('.gallery-preview__back-btn'),
     },
     inputs: {
       color: document.querySelector('.gallery-preview__color-input'),

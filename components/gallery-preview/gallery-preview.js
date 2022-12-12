@@ -21,8 +21,8 @@ const controlItems = {
 
     //delete button
     const deleteButton = newGalleryPreviewItem.appendChild(document.createElement('p'));
-    deleteButton.id = `delete-button-${idNumber}`;
-    deleteButton.classList.add('gallery-preview__delete-button', 'delete-button', 'btn');
+    deleteButton.id = `delete-btn-${idNumber}`;
+    deleteButton.classList.add('gallery-preview__delete-btn', 'delete-btn', 'btn');
     deleteButton.textContent = '×';
     listeners.setupGalleryPreviewItem(newGalleryPreviewItem);
     

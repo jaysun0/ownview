@@ -13,7 +13,6 @@ setupEventListeners();
 
 /* TO BE DONE:
 
-* add "clear all" button
 * overall refactoring
 * adding photos loader
 * indicators for lots of photos
