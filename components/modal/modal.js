@@ -1,19 +1,19 @@
-import { domElements } from "../state.js";
+import { dom } from "../state.js";
 
 function showMessage(message) {
-  domElements.modal.text.textContent = message;
-  domElements.modal.wrapper.style.transform = `translateY(${scrollY}px)`;
-  domElements.modal.wrapper.classList.remove('closed');
-  domElements.body.classList.add('stop-scrolling');
+  dom.modal.text.textContent = message;
+  dom.modal.wrapper.style.transform = `translateY(${scrollY}px)`;
+  dom.modal.wrapper.classList.remove('closed');
+  dom.body.classList.add('stop-scrolling');
 }
 
 function closeModal() {
-  domElements.modal.wrapper.classList.add('closed');
-  domElements.modal.text.textContent = '';
-  domElements.modal.wrapper.style.transform = `translateY(0px)`;
-  domElements.body.classList.remove('stop-scrolling');
+  dom.modal.wrapper.classList.add('closed');
+  dom.modal.text.textContent = '';
+  dom.modal.wrapper.style.transform = `translateY(0px)`;
+  dom.body.classList.remove('stop-scrolling');
 }
 
-domElements.modal.closeBtn.addEventListener('click', closeModal);
+dom.modal.closeBtn.addEventListener('click', closeModal);
 
 export { showMessage, closeModal };

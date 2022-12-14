@@ -11,12 +11,6 @@ setupEventListeners();
 * add apps description
 * add contacts
 
-refactoring:
-+ change domElements name to dom
-+ add domNodes creator function
-+ add checkExtension function to toolbox
-+ divide toolbox
-
 */
 
 

@@ -5,7 +5,7 @@ const state = {
 };
 
 /************* DOM ELEMENTS *************/
-const domElements = {
+const dom = {
   body: document.querySelector('body'),
 
   page: [
@@ -64,5 +64,5 @@ const domElements = {
   },
 }
 
-export { domElements };
+export { dom };
 export default state;

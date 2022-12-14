@@ -1,31 +1,34 @@
-import toolbox from '../../components/toolbox.js';
-import state, { domElements } from '../state.js';
+import { getIdNumber, createNode } from '../../components/toolbox.js';
+import state, { dom } from '../state.js';
 
 
 function openGallery(imageId) {
-  const gallery = domElements.gallery.gallery;
+  const gallery = dom.gallery.gallery;
   gallery.style.transform = `translateY(${scrollY}px)`;
   gallery.style.display = 'block';
   gallery.classList.add('stop-scrolling');
 
-  domElements.gallery.image.src = toolbox.findSourceById(imageId);
-  domElements.gallery.image.id = `img${toolbox.getIdNumber(imageId)}`;
+  const newId = `img${getIdNumber(imageId)}`;
+  dom.gallery.image.id = `img${getIdNumber(imageId)}`;
+  dom.images.original.forEach(image => {
+    if(image.id === newId) dom.gallery.image.src = image.src;
+  });
 
-  const idNumber = toolbox.getIdNumber(imageId);
+  const idNumber = getIdNumber(imageId);
   setIndicator(idNumber);
 };
 
 
 function closeGallery() {
-  const gallery = domElements.gallery.gallery;
+  const gallery = dom.gallery.gallery;
   gallery.classList.remove('stop-scrolling');
   gallery.style.display = 'none';
 };
 
 
 function flipThrough(direction) {
-  const images = [...domElements.images.original];
-  const currentImageIndex = images.findIndex(image => image.src === domElements.gallery.image.src);
+  const images = [...dom.images.original];
+  const currentImageIndex = images.findIndex(image => image.src === dom.gallery.image.src);
   let nextImageId, nextImageIndex;
 
   if (direction === 'next') {
@@ -36,23 +39,22 @@ function flipThrough(direction) {
     nextImageId = images[nextImageIndex].id;
   }
 
-  domElements.gallery.image.src = toolbox.findSourceById(nextImageId);
-  domElements.gallery.image.id = nextImageId;
-  setIndicator(toolbox.getIdNumber(nextImageId));
+  dom.gallery.image.id = nextImageId;
+  dom.images.original.forEach(image => {
+    if(image.id === nextImageId) dom.gallery.image.src = image.src;
+  })
+  setIndicator(getIdNumber(nextImageId));
 }
 
 
 function createImageIndicator(idNumber) {
-  const indicator = document.createElement('li');
-
-  indicator.classList.add('gallery__indicator');
-  indicator.id = `indicator-${idNumber}`;
+  const indicator = createNode('li', `indicator-${idNumber}`, ['gallery__indicator']);
   indicator.addEventListener('click', () => {
     openGallery(`gallery-preview-item-${idNumber}`);
     setIndicator(idNumber);
   });
 
-  domElements.gallery.indicators.append(indicator);
+  dom.gallery.indicators.append(indicator);
 }
 
 
@@ -62,7 +64,7 @@ function createImage(source, idNumber) {;
   image.id = `img${idNumber}`;
   image.src = source;
 
-  domElements.images.original.push(image);
+  dom.images.original.push(image);
   createImageIndicator(idNumber);
 }
 
