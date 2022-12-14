@@ -1,14 +1,13 @@
 const state = {
   galleryCreated: false,
-  itemsCount: 0,
+  itemsCount: 3,
   activeIndicatorId: 0,
 };
 
 /************* DOM ELEMENTS *************/
-const domElements = {
+const dom = {
   body: document.querySelector('body'),
 
-  //elements to be hidden when user turns on gallery mode
   page: [
       document.querySelector('.header'),
       document.querySelector('.gallery-preview__title'),
@@ -65,5 +64,5 @@ const domElements = {
   },
 }
 
-export { domElements };
+export { dom };
 export default state;
