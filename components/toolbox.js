@@ -8,30 +8,25 @@ const toolbox = {
 
   //finds 'src' attribute value of an original-size photo
   findSourceById: function(imageId){
-    let attribute
-    const newId = `img${this.getIdNumber(imageId)}`
-    domElements.images.original.forEach(image =>{
+    let attribute;
+    const newId = `img${this.getIdNumber(imageId)}`;
+    domElements.images.original.forEach(image => {
       if(image.id === newId) attribute = image.src;
     });
-    return attribute
-  },
-
-  //finds indicator-element
-  getIndicatorElement(idNumber) {
-    return document.getElementById(`indicator-${idNumber}`);
+    return attribute;
   },
 
   //Finds image ratio and defines it's compression parameters
   findCompressionParameters: function(width, height){
     let large, small, divisor, counter, ratioWidth, ratioHeight, scale
-    divisor = -1
+    divisor = -1;
 
     if(width > height){
-      large = width
-      small = height
+      large = width;
+      small = height;
     } else {
-      large = height
-      small = width
+      large = height;
+      small = width;
     }
 
     counter = small

@@ -1,8 +1,13 @@
-import state, { domElements } from './state.js';
-import gallery from './gallery/gallery.js';
-import toolbox from '../components/toolbox.js';
 import { addNewItem, deleteItem } from './galleryPreview/galleryPreview.js';
+import state, { domElements } from './state.js';
+import toolbox from '../components/toolbox.js';
 import { showMessage } from './modal/modal.js';
+import {
+  openGallery,
+  closeGallery,
+  flipThrough,
+  createImage
+} from './gallery/gallery.js';
 
 /************* Gallery Actions *************/
 function addItems(){
@@ -60,11 +65,11 @@ function leavePresentationRegimen() {
 }
 
 
-function openGallery(item) {
-  if(state.galleryCreated) gallery.openGallery(item.id);
+function open(item) {
+  if(state.galleryCreated) openGallery(item.id);
   else {
     createGallery();
-    gallery.openGallery(item.id);
+    openGallery(item.id);
   }
 }
 
@@ -86,7 +91,7 @@ const listeners = {
   },
 
   setupGalleryPreviewItem(item) {
-    item.addEventListener('click', () => openGallery(item));
+    item.addEventListener('click', () => open(item));
     const deleteButton = item.querySelector('.delete-btn');
     deleteButton.addEventListener('click', (event) => {
       event.stopPropagation();
@@ -95,13 +100,13 @@ const listeners = {
   },
 
   setupGallery() {
-    domElements.gallery.btns.close.addEventListener('click', gallery.closeGallery);
-    domElements.gallery.btns.flip.forEach(btn => btn.addEventListener('click', () => gallery.flipThrough(btn.id)));
+    domElements.gallery.btns.close.addEventListener('click', closeGallery);
+    domElements.gallery.btns.flip.forEach(btn => btn.addEventListener('click', () => flipThrough(btn.id)));
 
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowLeft') gallery.flipThrough('previous');
-      else if (e.key === 'ArrowRight') gallery.flipThrough('next');
-      else if (e.key === 'Escape') gallery.closeGallery();
+      if (e.key === 'ArrowLeft') flipThrough('previous');
+      else if (e.key === 'ArrowRight') flipThrough('next');
+      else if (e.key === 'Escape') closeGallery();
     });
   },
 };
@@ -114,7 +119,7 @@ function setupEventListeners(){
   listeners.setupPreviewControls();
   listeners.setupGallery();
   
-  for(let i = 0; i < state.itemsCount; i++) gallery.createImage(`./assets/img/img${i}.jpg`, i);
+  for(let i = 0; i < state.itemsCount; i++) createImage(`./assets/img/img${i}.jpg`, i);
 };
 
 export default setupEventListeners;

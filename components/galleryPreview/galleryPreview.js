@@ -1,5 +1,5 @@
 import toolbox from '../toolbox.js';
-import gallery from '../gallery/gallery.js';
+import { createImage } from '../gallery/gallery.js';
 import { listeners } from '../events.js';
 import state, { domElements } from '../state.js';
 import { showMessage } from '../modal/modal.js';
@@ -64,7 +64,7 @@ export function addNewItem(photo, idNumber) {
 
     const reader = new FileReader();
     reader.onload = () => {
-      gallery.createImage(reader.result, idNumber);
+      createImage(reader.result, idNumber);
       domElements.fileInput.input.value = '';
     }
     reader.onerror = () => showMessage(`An error occured while reading the provided file... Are you sure it's an image?`);
