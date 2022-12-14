@@ -3,7 +3,7 @@ import state, { domElements } from '../state.js';
 
 const gallery = {
   //opens the gallery
-  openGallery: function(imageId){
+  openGallery(imageId) {
     const gallery = domElements.gallery.gallery;
     gallery.style.transform = `translateY(${scrollY}px)`;
     gallery.classList.add('stop-scrolling');
@@ -16,11 +16,25 @@ const gallery = {
   },
 
   //closes the gallery
-  closeGallery: function(){
+  closeGallery(){
     const gallery = domElements.gallery.gallery;
     gallery.classList.remove('stop-scrolling');
     gallery.style.display = 'none';
   },
+
+  createImageIndicator(idNumber) {
+    const indicator = document.createElement('li');
+
+    indicator.classList.add('gallery__indicator');
+    indicator.id = `indicator-${idNumber}`;
+    indicator.addEventListener('click', () => {
+      gallery.openGallery(`gallery-preview-item-${idNumber}`);
+      gallery.setIndicator(idNumber);
+    });
+
+    domElements.gallery.indicators.append(indicator);
+  },
+
 
   setIndicator(id) {
     const activeIndicator = toolbox.getIndicatorElement(state.activeIndicatorId);
@@ -56,10 +70,12 @@ const gallery = {
   //creates instance of an original-size photo
   createImage: function(source, idNumber){;
     const image = new Image();
-    image.src = source;
-    image.id = `img${idNumber}`;
-    domElements.images.original.push(image);
     image.style.display = 'none';
+    image.id = `img${idNumber}`;
+    image.src = source;
+
+    domElements.images.original.push(image);
+    this.createImageIndicator(idNumber);
   },
 }
 

@@ -50,6 +50,8 @@
 	flex-wrap: wrap;
 	justify-content: center;
 	align-items: center;
+	align-content: flex-start;
+	gap: 1rem;
 }
 
 .file-input__input {
@@ -78,7 +80,6 @@
 
 /* items */
 .gallery-preview__item {
-	margin: .7rem;
 	width: 15rem;
 	height: 10rem;
 	position: relative;

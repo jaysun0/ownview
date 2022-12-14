@@ -1,7 +1,7 @@
 import state, { domElements } from './state.js';
 import gallery from './gallery/gallery.js';
 import toolbox from '../components/toolbox.js';
-import { controlItems } from './gallery-preview/gallery-preview.js';
+import { addNewItem, deleteItem } from './galleryPreview/galleryPreview.js';
 import { showMessage } from './modal/modal.js';
 
 /************* Gallery Actions *************/
@@ -10,25 +10,13 @@ function addItems(){
   const number = newPhotos.length;
   
   if(number > 0){
-    for(let i = 0; i < number; i++) controlItems.addNewItem(newPhotos[i], ++state.itemsCount);
+    for(let i = 0; i < number; i++) addNewItem(newPhotos[i], ++state.itemsCount);
   } else showMessage('Choose one or multiple images from your device to add to the gallery.');
-}
-
-function setupIndicator(indicator, id) {
-  indicator.addEventListener('click', () => {
-    gallery.openGallery(`gallery-preview-item-${id}`);
-    gallery.setIndicator(id);
-  });
-}
-
-function deleteItem(id) {
-  state.itemsCount--;
-  controlItems.deleteItem(toolbox.getIdNumber(id));
 }
 
 function deleteAllItems() {
   const imageIds = domElements.images.compressed.map(image => image.id);
-  imageIds.forEach(id => deleteItem(id));
+  imageIds.forEach(id => deleteItem(toolbox.getIdNumber(id)));
   showMessage('All images were deleted.');
 }
 
@@ -84,7 +72,7 @@ function openGallery(item) {
 
 /************* EVENT LISTENERS *************/
 const listeners = {
-  setupPreviewControls(){
+  setupPreviewControls() {
     //add a new photo to the gallery
     domElements.fileInput.add.addEventListener('click', addItems);
     //change design color
@@ -99,42 +87,35 @@ const listeners = {
 
   setupGalleryPreviewItem(item) {
     item.addEventListener('click', () => openGallery(item));
-    //delete item
-    const deleteButton = item.children[1];
+    const deleteButton = item.querySelector('.delete-btn');
     deleteButton.addEventListener('click', (event) => {
       event.stopPropagation();
-      deleteItem(event.target.id);
+      deleteItem(toolbox.getIdNumber(event.target.id));
     });
   },
 
-  setupGallery(){
-    //close gallery
-    domElements.gallery.btns.close.addEventListener('click', gallery.closeGallery)
+  setupGallery() {
+    domElements.gallery.btns.close.addEventListener('click', gallery.closeGallery);
+    domElements.gallery.btns.flip.forEach(btn => btn.addEventListener('click', () => gallery.flipThrough(btn.id)));
 
-    //flip through gallery
-    domElements.gallery.btns.flip.forEach(currentBtn => currentBtn.addEventListener('click', function(){
-      gallery.flipThrough(currentBtn.id);
-    }));
-
-    //open image via indicator
-    [...domElements.gallery.indicators.children].forEach((indicator, index) => setupIndicator(indicator, index));
-
-    //keyboard keys to control gallery
     document.addEventListener('keydown', (e) => {
-      if(e.key === 'ArrowLeft') gallery.flipThrough('previous')
-      else if(e.key === 'ArrowRight') gallery.flipThrough('next')
-      else if(e.key === 'Escape') gallery.closeGallery()
-    })
+      if (e.key === 'ArrowLeft') gallery.flipThrough('previous');
+      else if (e.key === 'ArrowRight') gallery.flipThrough('next');
+      else if (e.key === 'Escape') gallery.closeGallery();
+    });
   },
 };
 
 function setupEventListeners(){
   const logo = document.querySelector('.header__title');
   logo.addEventListener('click', () => window.location.reload());
+
   domElements.galleryPreview.items.forEach((item) => listeners.setupGalleryPreviewItem(item));
   listeners.setupPreviewControls();
   listeners.setupGallery();
+  
+  for(let i = 0; i < state.itemsCount; i++) gallery.createImage(`./assets/img/img${i}.jpg`, i);
 };
 
-export { listeners, setupIndicator };
 export default setupEventListeners;
+export { listeners };

@@ -1,6 +1,6 @@
 @import 'assets/styles/general.css';
 @import 'components/header/header.css';
-@import 'components/gallery-preview/gallery-preview.css';
+@import 'components/galleryPreview/galleryPreview.css';
 @import 'components/gallery/gallery.css';
 @import 'components/footer/footer.css';
 @import 'components/modal/modal.css';
