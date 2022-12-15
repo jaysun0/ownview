@@ -4,7 +4,6 @@ setupEventListeners();
 
 /* TO BE DONE:
 
-* overall refactoring
 * add loaders
 * indicators for lots of photos
 * adaptive

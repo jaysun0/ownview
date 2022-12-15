@@ -1,15 +1,15 @@
-export const getIdNumber = id => parseInt(id.match(/\d*$/));
+const getIdNumber = id => parseInt(id.match(/\d*$/));
 
 
-export function createNode(nodeName, id, classes) {
+function createNode(nodeName, id, classes) {
   const node = document.createElement(nodeName);
-  if (classes.length) node.classList.add(...classes);
+  if (classes && classes.length) node.classList.add(...classes);
   if (id) node.id = id;
   return node;
 } 
 
 
-export function findCompressionParameters (width, height) {
+function findCompressionParameters (width, height) {
   let large, small, divisor, counter, ratioWidth, ratioHeight, scale
   divisor = -1;
 
@@ -45,3 +45,10 @@ export function findCompressionParameters (width, height) {
     scale: scale,
   }
 };
+
+
+export {
+  getIdNumber,
+  createNode,
+  findCompressionParameters,
+}

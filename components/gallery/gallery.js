@@ -6,7 +6,7 @@ function openGallery(imageId) {
   const gallery = dom.gallery.gallery;
   gallery.style.transform = `translateY(${scrollY}px)`;
   gallery.style.display = 'block';
-  gallery.classList.add('stop-scrolling');
+  dom.body.classList.add('stop-scrolling');
 
   const newId = `img${getIdNumber(imageId)}`;
   dom.gallery.image.id = `img${getIdNumber(imageId)}`;
@@ -21,7 +21,7 @@ function openGallery(imageId) {
 
 function closeGallery() {
   const gallery = dom.gallery.gallery;
-  gallery.classList.remove('stop-scrolling');
+  dom.body.classList.remove('stop-scrolling');
   gallery.style.display = 'none';
 };
 
