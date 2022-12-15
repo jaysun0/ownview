@@ -4,7 +4,7 @@ setupEventListeners();
 
 /* TO BE DONE:
 
-* add loaders
+* ??? speed of the flipping through heavy images (maybe change thier quality to be not more than smth);
 * indicators for lots of photos
 * adaptive
 * add apps description

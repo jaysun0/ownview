@@ -40,9 +40,10 @@ function flipThrough(direction) {
   }
 
   dom.gallery.image.id = nextImageId;
-  dom.images.original.forEach(image => {
-    if(image.id === nextImageId) dom.gallery.image.src = image.src;
-  })
+  const now = new Date();
+  const newImage = dom.images.original.find(image => image.id === nextImageId);
+  dom.gallery.image.src = newImage.src;
+  const now1 = new Date();
   setIndicator(getIdNumber(nextImageId));
 }
 

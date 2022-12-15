@@ -4,6 +4,7 @@
   --red: #f21;
 
   --gray: #999;
+  --gray-dark: #666;
   --gray-light: #eee;
   --black: #000;
   --white: #fff;
@@ -56,6 +57,12 @@ body {
 .btn:hover {
   transform: translateY(2px);
   background-color: var(--gray);
+}
+.btn[disabled] {
+  background: var(--gray-dark);
+}
+.btn[disabled]:hover {
+  transform: none;
 }
 
 .has-shadow {

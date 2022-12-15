@@ -2,6 +2,10 @@ const state = {
   galleryCreated: false,
   itemsCount: 3,
   activeIndicatorId: 0,
+  imageAddition: {
+    toAdd: 0,
+    added: 0
+  }
 };
 
 /************* DOM ELEMENTS *************/
@@ -51,6 +55,7 @@ const dom = {
   modal: {
     wrapper: document.querySelector('.modal__wrapper'),
     text: document.querySelector('.modal__text'),
+    info: document.querySelector('.modal__info'),
     closeBtn: document.querySelector('.modal__close-btn'),
   },
 

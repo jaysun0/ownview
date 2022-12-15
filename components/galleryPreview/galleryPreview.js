@@ -2,7 +2,7 @@ import { createNode, findCompressionParameters, getIdNumber } from '../toolbox.j
 import { createImage } from '../gallery/gallery.js';
 import { listeners } from '../events.js';
 import state, { dom } from '../state.js';
-import { showMessage } from '../modal/modal.js';
+import { showMessage, addInfo } from '../modal/modal.js';
 
 
 function createGalleryPreviewElement (image, idNumber){
@@ -48,6 +48,12 @@ function addGalleryPreviewItem(originalImage, idNumber) {
       const compressedImage = new Image();
       compressedImage.src = canvas.toDataURL('image/jpeg', imageQuality);
       createGalleryPreviewElement(compressedImage, idNumber);
+      
+      addInfo(`Progress: ${++state.imageAddition.added}/${state.imageAddition.toAdd} ...`);
+      if (state.imageAddition.added === state.imageAddition.toAdd) {
+        addInfo(`${state.imageAddition.added} images added.`);
+        dom.modal.closeBtn.removeAttribute('disabled', '');
+      };
     }
   }
 
