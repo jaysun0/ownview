@@ -1,7 +1,7 @@
 import { addNewItem, deleteItem } from './galleryPreview/galleryPreview.js';
 import state, { dom } from './state.js';
 import { getIdNumber } from '../components/toolbox.js';
-import { showMessage } from './modal/modal.js';
+import { showMessage, addInfo } from './modal/modal.js';
 import {
   openGallery,
   closeGallery,
@@ -14,7 +14,12 @@ function addItems(){
   const newPhotos = dom.fileInput.input.files;
   const number = newPhotos.length;
   
-  if(number > 0){
+  if(number > 0) {
+    state.imageAddition.added = 0;
+    state.imageAddition.toAdd = number;
+    showMessage('Please, wait for your images to be added to the app.');
+    addInfo(`Progress: 0/${number} ...`);
+    dom.modal.closeBtn.setAttribute('disabled', '');
     for(let i = 0; i < number; i++) addNewItem(newPhotos[i], ++state.itemsCount);
   } else showMessage('Choose one or multiple images from your device to add to the gallery.');
 }
