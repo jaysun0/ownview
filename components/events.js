@@ -6,7 +6,7 @@ import {
   openGallery,
   closeGallery,
   flipThrough,
-  createImage
+  createGalleryImage
 } from './gallery/gallery.js';
 
 /************* Gallery Actions *************/
@@ -22,6 +22,8 @@ function addItems(){
     dom.modal.closeBtn.setAttribute('disabled', '');
     for(let i = 0; i < number; i++) addNewItem(newPhotos[i], ++state.itemsCount);
   } else showMessage('Choose one or multiple images from your device to add to the gallery.');
+  
+  dom.fileInput.input.value = '';
 }
 
 function deleteAllItems() {
@@ -124,7 +126,7 @@ function setupEventListeners(){
   listeners.setupPreviewControls();
   listeners.setupGallery();
   
-  for(let i = 0; i < state.itemsCount; i++) createImage(`./assets/img/img${i}.jpg`, i);
+  for(let i = 0; i < state.itemsCount; i++) createGalleryImage(`./assets/img/img${i}.jpg`, i);
 };
 
 export default setupEventListeners;

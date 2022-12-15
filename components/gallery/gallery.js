@@ -59,7 +59,7 @@ function createImageIndicator(idNumber) {
 }
 
 
-function createImage(source, idNumber) {;
+function createGalleryImage(source, idNumber) {;
   const image = new Image();
   image.style.display = 'none';
   image.id = `img${idNumber}`;
@@ -82,5 +82,5 @@ export {
   openGallery,
   closeGallery,
   flipThrough,
-  createImage,
+  createGalleryImage,
 };

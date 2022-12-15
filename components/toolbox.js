@@ -9,46 +9,72 @@ function createNode(nodeName, id, classes) {
 } 
 
 
-function findCompressionParameters (width, height) {
-  let large, small, divisor, counter, ratioWidth, ratioHeight, scale
-  divisor = -1;
-
-  if(width > height){
-    large = width;
-    small = height;
+function findCompressionParameters (imageWidth, imageHeight, minWidth) {
+  let large, small, divisor = -1;
+  //find the greatest side (to find common divisor)
+  if (imageWidth > imageHeight) {
+    large = imageWidth;
+    small = imageHeight;
   } else {
-    large = height;
-    small = width;
+    large = imageHeight;
+    small = imageWidth;
   }
-
-  counter = small;
-
+  //find general divisor (to find ratio)
+  let counter = small;
   while (divisor === -1) {
     if(large % counter === 0 && small % counter === 0) divisor = counter;
     counter--;
   }
-
-  ratioWidth = width/divisor;
-  ratioHeight = height/divisor;
-
+  //find ratio
+  let ratioWidth = imageWidth/divisor;
+  let ratioHeight = imageHeight/divisor;
   while (ratioWidth > 16 || ratioHeight > 16) {
     ratioWidth = Math.round(ratioWidth/2);
     ratioHeight = Math.round(ratioHeight/2);
   }
-
-  if (ratioWidth > 5 || ratioHeight > 5) scale = 30;
-  else scale = 90
+  //set appropriate scaling
+  let width, height = 0;
+  let scale = 10;
+  while (width < minWidth || height < minWidth) {
+    scale += 10;
+    width = ratioWidth * scale;
+    height = ratioHeight * scale;
+  }
 
   return {
-    width: ratioWidth,
-    height: ratioHeight,
-    scale: scale,
+    width,
+    height,
   }
 };
+
+
+function compressImage(originalImage, maxWidth, callback) {
+  const reader = new FileReader();
+  const image = new Image();
+  const canvas = createNode('canvas');
+  const ctx = canvas.getContext('2d');
+  const imageQuality = 1;
+
+  reader.onload = () => {  
+    image.src = reader.result;
+    image.onload = () => {
+      const { width, height } = findCompressionParameters(image.width, image.height, maxWidth);
+      canvas.width = width;
+      canvas.height = height;
+      ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+
+      const compressedImage = new Image();
+      compressedImage.src = canvas.toDataURL('image/jpeg', imageQuality);
+      callback(compressedImage);
+    }
+  }
+
+  return reader.readAsDataURL(originalImage);
+}
 
 
 export {
   getIdNumber,
   createNode,
-  findCompressionParameters,
+  compressImage,
 }
