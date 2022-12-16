@@ -9,29 +9,31 @@ function createNode(nodeName, id, classes) {
 } 
 
 
-function findCompressionParameters (imageWidth, imageHeight, minWidth) {
-  let large, small, divisor = -1;
-  //find the greatest side (to find common divisor)
-  if (imageWidth > imageHeight) {
-    large = imageWidth;
-    small = imageHeight;
-  } else {
-    large = imageHeight;
-    small = imageWidth;
-  }
-  //find general divisor (to find ratio)
+function findGeneralGreatestDivisor(number1, number2) {
+  let large = number1 > number2 ? number1 : number2;
+  let small = number1 < number2 ? number1 : number2;
   let counter = small;
+  let divisor = -1;
+
   while (divisor === -1) {
     if(large % counter === 0 && small % counter === 0) divisor = counter;
     counter--;
   }
-  //find ratio
+
+  return divisor;
+}
+
+
+function findCompressionParameters (imageWidth, imageHeight, minWidth) {
+  const divisor = findGeneralGreatestDivisor(imageWidth, imageHeight);
+  //get image proportions
   let ratioWidth = imageWidth/divisor;
   let ratioHeight = imageHeight/divisor;
   while (ratioWidth > 16 || ratioHeight > 16) {
     ratioWidth = Math.round(ratioWidth/2);
     ratioHeight = Math.round(ratioHeight/2);
   }
+
   //set appropriate scaling
   let width, height = 0;
   let scale = 10;
