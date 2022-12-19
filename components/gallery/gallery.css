@@ -4,20 +4,16 @@
 	left: 0;
 	right: 0;
 	bottom: 0;
-
+	min-height: 100vh;
 	z-index: 999;
 	overflow: hidden;
-	min-height: 100vh;
-
-
-	background-color: #0007;
-	backdrop-filter: blur(10px);
-	color: var(--accent-color);
 
 	flex-direction: column;
 	justify-content: center;
 	align-items: space-between;
 	display: none;
+	background-color: #000b;
+	color: var(--accent-color);
 }
 
 /* buttons */
