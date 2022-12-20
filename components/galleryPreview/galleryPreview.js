@@ -4,8 +4,8 @@ import { listeners } from '../events.js';
 import state, { dom } from '../state.js';
 import { 
   compressImage, 
-  createNode, 
-  getIdNumber 
+  createNode,
+  findOrderIndexById
 } from '../toolbox.js';
 
 
@@ -36,8 +36,8 @@ function addGalleryPreviewItem(image, idNumber) {
   addInfo(`Progress: ${++state.imageAddition.added}/${state.imageAddition.toAdd} ...`);
   if (state.imageAddition.added === state.imageAddition.toAdd) {
     addInfo(`${state.imageAddition.added} images added.`);
-    dom.modal.closeBtn.removeAttribute('disabled', '');
-  };
+    dom.modal.closeBtn.removeAttribute('disabled');
+  }
 }
 
 
@@ -47,31 +47,28 @@ export function addNewItem(image, idNumber) {
   if (image.name.match(regExp)) {
     const galleryPreviewImageMinWidth = 240;
     const galleryImageMinWidth = 1080;
-    const addGalleryPreviewItemBinded = (compressedImg) => addGalleryPreviewItem.call(null, compressedImg, idNumber);
-    const createGalleryImageBinded = (compressedImg) => createGalleryImage.call(null, compressedImg.src, idNumber);
-    compressImage(image, galleryPreviewImageMinWidth, addGalleryPreviewItemBinded);
-    compressImage(image, galleryImageMinWidth, createGalleryImageBinded);
+    const addGalleryPreviewItemBound = (compressedImg) => addGalleryPreviewItem.call(null, compressedImg, idNumber);
+    const createGalleryImageBound = (compressedImg) => createGalleryImage.call(null, compressedImg.src, idNumber);
+    compressImage(image, galleryPreviewImageMinWidth, addGalleryPreviewItemBound);
+    compressImage(image, galleryImageMinWidth, createGalleryImageBound);
   } else showMessage(`The provided file must be one of the following formats: "jpg", "jpeg", "png", "svg", "ico", "heic", 
   "gif"`);
 }
 
 
 export function deleteItem(idNumber) {
-  state.itemsCount--;
-
-  //update data about images
-  const index = dom.images.original.findIndex(image => {
-    return getIdNumber(image.id) === idNumber;
-  });
-
-  dom.images.compressed.splice(index, 1);
-  dom.images.original.splice(index, 1);
-
-  //delete items from the UI
+  //delete from original images object
+  delete dom.images.original[`img${idNumber}`];
+  //delete from preview images array
+  const imageIndex = dom.images.compressed.findIndex(img => img.id === `img${idNumber}`);
+  dom.images.compressed.splice(imageIndex, 1);
+  //delete from UI
   const previewItem = document.getElementById(`gallery-preview-item-${idNumber}`);
   document.getElementById(`indicator-${idNumber}`).remove();
   previewItem.remove();
-};
+  //delete from order
+  dom.images.order.splice(findOrderIndexById(idNumber), 1);
+}
 
 
 

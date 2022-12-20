@@ -1,21 +1,16 @@
-import { getIdNumber, createNode } from '../../components/toolbox.js';
+import {getIdNumber, createNode, findOrderIndexById} from '../../components/toolbox.js';
 import state, { dom } from '../state.js';
 
 
-function openGallery(imageId) {
+function openGallery(imageNumber) {
+  state.currentImgIndex = findOrderIndexById(imageNumber);
+
   const gallery = dom.gallery.gallery;
   gallery.style.transform = `translateY(${scrollY}px)`;
   gallery.style.display = 'block';
   dom.body.classList.add('stop-scrolling');
-
-  const newId = `img${getIdNumber(imageId)}`;
-  dom.gallery.image.id = `img${getIdNumber(imageId)}`;
-  dom.images.original.forEach(image => {
-    if(image.id === newId) dom.gallery.image.src = image.src;
-  });
-
-  const idNumber = getIdNumber(imageId);
-  setIndicator(idNumber);
+  dom.gallery.image.src = dom.images.original[`img${imageNumber}`].src;
+  setIndicator(imageNumber);
 };
 
 
@@ -27,31 +22,25 @@ function closeGallery() {
 
 
 function flipThrough(direction) {
-  const images = [...dom.images.original];
-  const currentImageIndex = images.findIndex(image => image.src === dom.gallery.image.src);
-  let nextImageId, nextImageIndex;
+  const images = dom.images.original;
+  const order = dom.images.order;
 
-  if (direction === 'next') {
-    nextImageIndex = (currentImageIndex + 1) >= images.length ? 0 : (currentImageIndex + 1);
-    nextImageId = images[nextImageIndex].id;
-  } else {
-    nextImageIndex = (currentImageIndex - 1) < 0 ? (images.length - 1) : (currentImageIndex - 1);
-    nextImageId = images[nextImageIndex].id;
-  }
+  if (direction === 'next') state.currentImgIndex = state.currentImgIndex >= (order.length - 1) ? 0 : (state.currentImgIndex + 1);
+  else state.currentImgIndex = state.currentImgIndex === 0 ? order.length - 1 : (state.currentImgIndex - 1);
 
-  dom.gallery.image.id = nextImageId;
-  const now = new Date();
-  const newImage = dom.images.original.find(image => image.id === nextImageId);
+  const newImageNumber = order[state.currentImgIndex];
+  const newImage = images[`img${newImageNumber}`];
+
+  setIndicator(newImageNumber);
   dom.gallery.image.src = newImage.src;
-  const now1 = new Date();
-  setIndicator(getIdNumber(nextImageId));
 }
 
 
 function createImageIndicator(idNumber) {
   const indicator = createNode('li', `indicator-${idNumber}`, ['gallery__indicator']);
   indicator.addEventListener('click', () => {
-    openGallery(`gallery-preview-item-${idNumber}`);
+    dom.gallery.image.src = dom.images.original[`img${idNumber}`].src;
+    state.currentImgIndex = findOrderIndexById(idNumber);
     setIndicator(idNumber);
   });
 
@@ -65,16 +54,19 @@ function createGalleryImage(source, idNumber) {;
   image.id = `img${idNumber}`;
   image.src = source;
 
-  dom.images.original.push(image);
+  dom.images.original[image.id] = image;
   createImageIndicator(idNumber);
+  dom.images.order.push(idNumber);
 }
 
 
-function setIndicator(id) {
-  const activeIndicator = document.getElementById(`indicator-${state.activeIndicatorId}`);
+function setIndicator(idNumber) {
+  const activeIndicator = document.getElementById(`indicator-${state.activeIndicator}`);
   activeIndicator && activeIndicator.classList.remove('gallery__indicator_active');
-  document.getElementById(`indicator-${id}`).classList.add('gallery__indicator_active');
-  state.activeIndicatorId = id;
+
+  const newActiveIndicator = document.getElementById(`indicator-${idNumber}`);
+  newActiveIndicator.classList.add('gallery__indicator_active');
+  state.activeIndicator = idNumber;
 }
 
 

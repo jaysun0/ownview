@@ -1,7 +1,8 @@
 const state = {
   galleryCreated: false,
   itemsCount: 3,
-  activeIndicatorId: 0,
+  currentImgIndex: 0,
+  activeIndicator: 0,
   imageAddition: {
     toAdd: 0,
     added: 0
@@ -65,7 +66,8 @@ const dom = {
       document.getElementById('imgC1'),
       document.getElementById('imgC2'),
     ],
-    original: [],
+    original: {},
+    order: [],
   },
 }
 

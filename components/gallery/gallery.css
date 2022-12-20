@@ -10,7 +10,7 @@
 
 	flex-direction: column;
 	justify-content: center;
-	align-items: space-between;
+	align-items: stretch;
 	display: none;
 	background-color: #000b;
 	color: var(--accent-color);

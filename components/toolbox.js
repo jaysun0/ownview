@@ -1,3 +1,5 @@
+import { dom } from "./state.js";
+
 const getIdNumber = id => parseInt(id.match(/\d*$/));
 
 
@@ -75,8 +77,14 @@ function compressImage(originalImage, maxWidth, callback) {
 }
 
 
+function findOrderIndexById(idNumber) {
+  return dom.images.order.findIndex(number => number === idNumber);
+}
+
+
 export {
   getIdNumber,
   createNode,
   compressImage,
+  findOrderIndexById,
 }

@@ -9,7 +9,7 @@ import {
   createGalleryImage
 } from './gallery/gallery.js';
 
-/************* Gallery Actions *************/
+/************* GALLERY ACTIONS *************/
 function addItems(){
   const newPhotos = dom.fileInput.input.files;
   const number = newPhotos.length;
@@ -20,7 +20,7 @@ function addItems(){
     showMessage('Please, wait for your images to be added to the app.');
     addInfo(`Progress: 0/${number} ...`);
     dom.modal.closeBtn.setAttribute('disabled', '');
-    for(let i = 0; i < number; i++) addNewItem(newPhotos[i], ++state.itemsCount);
+    for(let i = 0; i < number; i++) addNewItem(newPhotos[i], state.itemsCount++);
   } else showMessage('Choose one or multiple images from your device to add to the gallery.');
   
   dom.fileInput.input.value = '';
@@ -73,10 +73,11 @@ function leavePresentationRegimen() {
 
 
 function open(item) {
-  if(state.galleryCreated) openGallery(item.id);
+  const itemNumber = getIdNumber(item.id);
+  if(state.galleryCreated) openGallery(itemNumber);
   else {
     createGallery();
-    openGallery(item.id);
+    openGallery(itemNumber);
   }
 }
 
