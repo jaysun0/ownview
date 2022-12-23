@@ -1,6 +1,6 @@
 import { addNewItem, deleteItem } from './galleryPreview/galleryPreview.js';
 import state, { dom } from './state.js';
-import { getIdNumber } from '../components/toolbox.js';
+import { getIdNumber } from './toolbox.js';
 import { showMessage, addInfo } from './modal/modal.js';
 import {
   openGallery,
@@ -37,7 +37,7 @@ function changeDesignColor() {
   const root = document.documentElement;
   const accentColor = dom.galleryPreview.inputs.color.value;
   root.style.setProperty('--accent-color', accentColor);
-  document.querySelector('.page').style.backgroundColor = accentColor;
+  dom.body.style.backgroundColor = accentColor;
 }
 
 
@@ -128,7 +128,7 @@ function setupEventListeners(){
   listeners.setupGallery();
   
   for(let i = 0; i < state.itemsCount; i++) createGalleryImage(`./assets/img/img${i}.jpg`, i);
-};
+}
 
 export default setupEventListeners;
 export { listeners };

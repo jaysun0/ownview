@@ -17,7 +17,6 @@
 .header__motto {
   font-size: 0.8rem;
   padding: 1em;
-  padding-left: 1em;
   width: 100%;
 
   background: var(--main-color);

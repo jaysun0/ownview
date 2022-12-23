@@ -14,7 +14,7 @@
 .gallery-preview__controls-wrapper {
 	position: sticky;
 	top: 1rem;
-	margin: 10px 0px;
+	margin: 10px 0;
 	padding: 1rem;
 	
 	display: flex;
@@ -108,7 +108,7 @@
 	font-weight: bold;
 
 	position: absolute;
-	top: 0em;
+	top: 0;
 	right: 0.5em;
 }
 
@@ -116,8 +116,8 @@
   padding: 2px 8px;
   font-size: 25px;
   border-top: none;
-	border-top-left-radius: 0px;
-	border-top-right-radius: 0px;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
 
   background-color: #000;
   transition: transform 150ms;

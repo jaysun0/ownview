@@ -1,4 +1,4 @@
-import {getIdNumber, createNode, findOrderIndexById} from '../../components/toolbox.js';
+import { createNode, findOrderIndexById} from '../toolbox.js';
 import state, { dom } from '../state.js';
 
 
@@ -7,18 +7,18 @@ function openGallery(imageNumber) {
 
   const gallery = dom.gallery.gallery;
   gallery.style.transform = `translateY(${scrollY}px)`;
-  gallery.style.display = 'block';
+  gallery.style.display = 'flex';
   dom.body.classList.add('stop-scrolling');
   dom.gallery.image.src = dom.images.original[`img${imageNumber}`].src;
   setIndicator(imageNumber);
-};
+}
 
 
 function closeGallery() {
   const gallery = dom.gallery.gallery;
   dom.body.classList.remove('stop-scrolling');
   gallery.style.display = 'none';
-};
+}
 
 
 function flipThrough(direction) {
@@ -48,7 +48,7 @@ function createImageIndicator(idNumber) {
 }
 
 
-function createGalleryImage(source, idNumber) {;
+function createGalleryImage(source, idNumber) {
   const image = new Image();
   image.style.display = 'none';
   image.id = `img${idNumber}`;

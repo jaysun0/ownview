@@ -37,7 +37,8 @@ function findCompressionParameters (imageWidth, imageHeight, minWidth) {
   }
 
   //set appropriate scaling
-  let width, height = 0;
+  let width = 0;
+  let height = 0;
   let scale = 10;
   while (width < minWidth || height < minWidth) {
     scale += 10;
@@ -49,7 +50,7 @@ function findCompressionParameters (imageWidth, imageHeight, minWidth) {
     width,
     height,
   }
-};
+}
 
 
 function compressImage(originalImage, maxWidth, callback) {
