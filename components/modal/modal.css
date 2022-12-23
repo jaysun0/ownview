@@ -42,6 +42,15 @@
   text-align: center;
 }
 
-.modal__text {
+.modal__text-wrapper {
   padding: 0 3rem;
+}
+
+.modal__info,
+.modal__text {
+  white-space: pre-wrap;
+}
+
+.modal__info {
+  padding-top: 1rem;
 }

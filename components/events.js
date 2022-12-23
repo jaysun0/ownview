@@ -51,7 +51,10 @@ function createGallery() {
       item.style.top = '1em';
       item.style.zIndex = '-1';
     });
-  } else showMessage('To create gallery you need to add some images. On the left there is a file-input to do that. You can add one or multiple files at once.');
+  } else {
+    showMessage('To create gallery you need to add some images. On the left there is a file-input to do that.');
+    addInfo('You can add one or multiple files at once.');
+  }
 }
 
 
@@ -84,7 +87,34 @@ function open(item) {
 
 
 /************* EVENT LISTENERS *************/
-const listeners = {
+function setupHeaderListeners() {
+  // reload page if logo was clicked
+  const logo = document.querySelector('.header__title');
+  logo.addEventListener('click', () => window.location.reload());
+
+
+  dom.header.descriptionBtn.addEventListener('click', function() {
+    const description = `
+  This app is a simple way to quickly create your own gallery. 
+  It's fast as uploaded images are compressed and stored/delivered in a right manner. 
+  It's easily-manageable and comfortable to navigate.`;
+    showMessage(description, 'about the app');
+    addInfo(` It's not something astonishing, but rather something simple and pleasant to use :)`);
+  });
+
+  dom.header.contactsBtn.addEventListener('click', function() {
+    const contacts = `
+telegram: @jaysun0
+mobile: +79114104802
+e-mail: jaysun0@yandex.ru
+githubs: jaysun0,  jaysuno0`;
+    showMessage(contacts, 'contacts');
+    addInfo(`
+Very nice to meet you :) 
+If you need a contact - telegram is the best option.`);
+  });
+}
+const imagesControlsListeners = {
   setupPreviewControls() {
     //add a new photo to the gallery
     dom.fileInput.add.addEventListener('click', addItems);
@@ -119,16 +149,13 @@ const listeners = {
   },
 };
 
-function setupEventListeners(){
-  const logo = document.querySelector('.header__title');
-  logo.addEventListener('click', () => window.location.reload());
-
-  dom.galleryPreview.items.forEach((item) => listeners.setupGalleryPreviewItem(item));
-  listeners.setupPreviewControls();
-  listeners.setupGallery();
-  
+function initiate(){
+  dom.galleryPreview.items.forEach((item) => imagesControlsListeners.setupGalleryPreviewItem(item));
+  imagesControlsListeners.setupPreviewControls();
+  imagesControlsListeners.setupGallery();
+  setupHeaderListeners()
   for(let i = 0; i < state.itemsCount; i++) createGalleryImage(`./assets/img/img${i}.jpg`, i);
 }
 
-export default setupEventListeners;
-export { listeners };
+export default initiate;
+export { imagesControlsListeners };

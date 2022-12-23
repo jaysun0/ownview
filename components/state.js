@@ -20,6 +20,11 @@ const dom = {
       document.querySelector('.footer'),
   ],
 
+  header: {
+    descriptionBtn: document.querySelector('.header__btn_description'),
+    contactsBtn: document.querySelector('.header__btn_contacts'),
+  },
+
   fileInput: {
       add: document.querySelector('.file-input__add-btn'),
       input: document.querySelector('.file-input__input'),
@@ -54,6 +59,7 @@ const dom = {
   },
 
   modal: {
+    title: document.querySelector('.modal__title'),
     wrapper: document.querySelector('.modal__wrapper'),
     text: document.querySelector('.modal__text'),
     info: document.querySelector('.modal__info'),

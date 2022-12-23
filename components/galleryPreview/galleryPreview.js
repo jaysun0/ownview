@@ -1,6 +1,6 @@
 import { showMessage, addInfo } from '../modal/modal.js';
 import { createGalleryImage } from '../gallery/gallery.js';
-import { listeners } from '../events.js';
+import { imagesControlsListeners } from '../events.js';
 import state, { dom } from '../state.js';
 import { 
   compressImage, 
@@ -26,7 +26,7 @@ function createGalleryPreviewElement (image, idNumber){
   const deleteButton = createNode('p', `delete-btn-${idNumber}`, ['gallery-preview__delete-btn', 'delete-btn', 'btn']);
   deleteButton.textContent = '×';
   galleryPreviewItem.appendChild(deleteButton);
-  listeners.setupGalleryPreviewItem(galleryPreviewItem);
+  imagesControlsListeners.setupGalleryPreviewItem(galleryPreviewItem);
 }
 
 
@@ -57,17 +57,17 @@ export function addNewItem(image, idNumber) {
 
 
 export function deleteItem(idNumber) {
-  //delete from original images object
-  delete dom.images.original[`img${idNumber}`];
-  //delete from preview images array
-  const imageIndex = dom.images.compressed.findIndex(img => img.id === `img${idNumber}`);
+  //find index of the image to delete
+  const imageIndex = dom.images.compressed.findIndex(img => img.id === `imgC${idNumber}`);
   dom.images.compressed.splice(imageIndex, 1);
   //delete from UI
   const previewItem = document.getElementById(`gallery-preview-item-${idNumber}`);
   document.getElementById(`indicator-${idNumber}`).remove();
   previewItem.remove();
-  //delete from order
+
   dom.images.order.splice(findOrderIndexById(idNumber), 1);
+  delete dom.images.original[`img${idNumber}`];
+  state.itemsCount--;
 }
 
 

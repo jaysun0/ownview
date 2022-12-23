@@ -1,10 +1,8 @@
-import setupEventListeners from './components/events.js';
-setupEventListeners();
+import initiate from './components/events.js';
+initiate();
 
 /* TO BE DONE:
 
-* add apps description
-* add contacts
 * add language switcher
 * add background image
 * adaptive
