@@ -3,7 +3,6 @@ setupEventListeners();
 
 /* TO BE DONE:
 
-* ??? integrate image search?
 * add apps description
 * add contacts
 * add language switcher

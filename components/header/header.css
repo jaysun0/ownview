@@ -14,11 +14,51 @@
   text-shadow: var(--box-shadow-low);
 }
 
-.header__motto {
-  font-size: 0.8rem;
-  padding: 1em;
+.header__wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.header__wrapper_motto {
+  padding: .5rem;
   width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
 
   background: var(--main-color);
   border-bottom: var(--standard-border);
 }
+
+.header__motto {
+  font-size: 18px;
+}
+
+/* buttons */
+.header__wrapper_btns {
+  gap: 1rem;
+}
+
+.header__btn-wrapper {
+  border-radius: 200px;
+  border: 2px solid var(--gray-light);
+  width: 36px;
+  height: 36px;
+}
+
+.header__btn-wrapper:hover {
+  background-color: var(--gray);
+}
+
+.header__btn {
+  width: 100%;
+  height: 100%;
+  font-size: 1rem;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}
+
+

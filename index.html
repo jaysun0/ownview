@@ -12,9 +12,17 @@
   <body>
     <div class="container">
       <header class="header">
-        <p class="header__motto">
-          create your own gallery in a couple of clicks...
-        </p>
+        <div class="header__wrapper header__wrapper_motto">
+          <p class="header__motto">create your own gallery in a couple of clicks...</p>
+          <div class="header__wrapper header__wrapper_btns">
+            <div class="header__btn-wrapper">
+              <button class="header__btn header__btn_description">?</button>
+            </div>
+            <div class="header__btn-wrapper">
+              <button class="header__btn header__btn_contacts">c</button>
+            </div>
+          </div>
+        </div>
         <h1 class="header__title">ownview</h1>
       </header>
 
@@ -72,7 +80,7 @@
     </div>
 
     <div class="gallery">
-      <button class="gallery__button gallery__button_close">x</button>
+      <button class="gallery__button gallery__button_close">×</button>
 
       <div class="gallery__carousel">
         <button id="previous" class="gallery__button gallery__button_previous"><</button>

@@ -43,6 +43,7 @@
 .gallery__button_close {
 	height: 8%;
 	width: 100%;
+	font-size: 2rem;
 }
 
 .gallery__button_previous,
