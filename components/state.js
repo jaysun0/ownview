@@ -1,4 +1,5 @@
 const state = {
+  language: 'en',
   galleryCreated: false,
   itemsCount: 3,
   currentImgIndex: 0,
@@ -26,8 +27,8 @@ const dom = {
   },
 
   fileInput: {
-      add: document.querySelector('.file-input__add-btn'),
-      input: document.querySelector('.file-input__input'),
+      add: document.querySelector('.gallery-preview__add-btn'),
+      input: document.querySelector('.gallery-preview__file-input'),
   },
 
   galleryPreview: {

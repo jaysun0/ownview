@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en, ru">
+<html lang="en">
   <head>
     <title>Design Gallery</title>
     <meta lang="en">
@@ -13,7 +13,7 @@
     <div class="container">
       <header class="header">
         <div class="header__wrapper header__wrapper_motto">
-          <p class="header__motto">create your own gallery in a couple of clicks...</p>
+          <p class="header__motto">create your own gallery in a couple of clicks</p>
           <div class="header__wrapper header__wrapper_btns">
             <div class="header__btn-wrapper">
               <button class="header__btn header__btn_description">?</button>
@@ -33,13 +33,13 @@
           <div class="gallery-preview__main-wrapper">
             <div class="gallery-preview__controls-wrapper">
               <div class="gallery-preview__wrapper file-input has-shadow">
-                <p class="gallery-preview__label">add image/s</p>
-                <input class="file-input__input" type="file" name="file" multiple>
-                <button class="btn file-input__add-btn">add</button>
+                <p class="gallery-preview__label gallery-preview__label_add-image">add image/s</p>
+                <input lang="ru" class="gallery-preview__file-input" type="file" name="file" multiple>
+                <button class="btn gallery-preview__add-btn">add</button>
               </div>
 
               <div class="gallery-preview__wrapper has-shadow">
-                <label class="gallery-preview__label" for="color-input">change design color</label>
+                <label class="gallery-preview__label gallery-preview__label_change-color" for="color-input">change design color</label>
                 <div class="gallery-preview__color-input-wrapper">
                   <input id="color-input" class="gallery-preview__color-input" type="color" value="#777777">
                   <button class="btn gallery-preview__color-btn">change</button>
@@ -47,7 +47,7 @@
               </div>
 
               <div class="gallery-preview__wrapper has-shadow">
-                <p class="gallery-preview__label">delete all images</p>
+                <p class="gallery-preview__label gallery-preview__label_delete-all">delete all images</p>
                 <button class="btn gallery-preview__delete-all-btn">delete</button>
               </div>
 
@@ -93,7 +93,7 @@
 
     <div class="modal__wrapper closed">
       <div class="modal">
-        <p class="modal__title">System message</p>
+        <p class="modal__title">system message</p>
         <div class="modal__text-wrapper">
           <p class="modal__text"></p>
           <p class="modal__info"></p>

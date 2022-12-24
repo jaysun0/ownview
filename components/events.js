@@ -2,6 +2,7 @@ import { addNewItem, deleteItem } from './galleryPreview/galleryPreview.js';
 import state, { dom } from './state.js';
 import { getIdNumber } from './toolbox.js';
 import { showMessage, addInfo } from './modal/modal.js';
+import { initiateNodesTranslate} from './languageSwitcher/languageSwitcher.js';
 import {
   openGallery,
   closeGallery,
@@ -153,7 +154,8 @@ function initiate(){
   dom.galleryPreview.items.forEach((item) => imagesControlsListeners.setupGalleryPreviewItem(item));
   imagesControlsListeners.setupPreviewControls();
   imagesControlsListeners.setupGallery();
-  setupHeaderListeners()
+  setupHeaderListeners();
+  initiateNodesTranslate();
   for(let i = 0; i < state.itemsCount; i++) createGalleryImage(`./assets/img/img${i}.jpg`, i);
 }
 
