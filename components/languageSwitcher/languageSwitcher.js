@@ -28,6 +28,7 @@ function initiateNodesTranslate() {
     addNodeToTranslate('.gallery-preview__delete-all-btn', 'delete', 'удалить');
     addNodeToTranslate('.gallery-preview__create-btn', 'create gallery', 'создать галерею');
     addNodeToTranslate('.modal__title', 'system message', 'сиситемное сообщение');
+    addNodeToTranslate('.modal__close-btn', 'ok', 'ок');
 }
 
 dom.header.languageBtn.addEventListener('click', () => {

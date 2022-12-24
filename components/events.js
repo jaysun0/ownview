@@ -18,11 +18,17 @@ function addItems(){
   if(number > 0) {
     state.imageAddition.added = 0;
     state.imageAddition.toAdd = number;
-    showMessage('Please, wait for your images to be added to the app.');
-    addInfo(`Progress: 0/${number} ...`);
+    const message = state.language === 'en' ? 'Please, wait for your images to be loaded.' :
+        'Пожалуйста, подождите пока ваши изображения загрузятся.';
+    showMessage(message);
+    addInfo(`0/${number} ...`);
     dom.modal.closeBtn.setAttribute('disabled', '');
     for(let i = 0; i < number; i++) addNewItem(newPhotos[i], state.itemsCount++);
-  } else showMessage('Choose one or multiple images from your device to add to the gallery.');
+  } else {
+    const message = state.language === 'en' ? 'Choose one or multiple images from your device to add to the gallery.':
+        'Выберите одну или несколько изображений с вашего девайса для добавления в галерею.';
+    showMessage(message);
+  }
   
   dom.fileInput.input.value = '';
 }
@@ -30,7 +36,9 @@ function addItems(){
 function deleteAllItems() {
   const imageIds = dom.images.compressed.map(image => image.id);
   imageIds.forEach(id => deleteItem(getIdNumber(id)));
-  showMessage('All images were deleted.');
+
+  const message = state.language === 'en' ? 'All images were deleted.' : 'Все картинки были удалены';
+  showMessage(message);
 }
 
 
@@ -94,24 +102,37 @@ function setupHeaderListeners() {
   logo.addEventListener('click', () => window.location.reload());
 
   dom.header.descriptionBtn.addEventListener('click', function() {
-    const description = `
-  This app is a simple way to quickly create your own gallery. 
-  It's fast as uploaded images are compressed and stored/delivered in a right manner. 
-  It's easily-manageable and comfortable to navigate.`;
-    showMessage(description, 'about the app');
-    addInfo(` It's not something astonishing, but rather something simple and pleasant to use :)`);
+    const description = state.language === 'en' ? `
+This app is a simple way to create your own gallery. 
+*  It's fast as uploaded images are compressed and stored in a right manner. 
+*  It's easily-manageable and comfortable to use.` :
+        `Данное приложение - простой способ создать собственную галерею.
+*  Она быстрая, так как загружаемые картинки сжимаются и хранятся подобающим образом.
+*  Она легко-конфигурируемая и удобна в использовании.`;
+    const title =  state.language === 'en' ? 'about the app' : 'о приложении';
+    const adittionalMessage = state.language === 'en' ? `It's not something astonishing, but rather something simple and pleasant to use :)` : 'Это не нечто удивительное, а скорее что-то простое и прятное в использовании.';
+    showMessage(description, title);
+    addInfo(adittionalMessage);
   });
 
   dom.header.contactsBtn.addEventListener('click', function() {
-    const contacts = `
-telegram: @jaysun0
-mobile: +79114104802
-e-mail: jaysun0@yandex.ru
-githubs: jaysun0,  jaysuno0`;
-    showMessage(contacts, 'contacts');
-    addInfo(`
-Very nice to meet you :) 
-If you need a contact - telegram is the best option.`);
+    const contacts = state.language === 'en' ? `
+*  telegram: @jaysun0
+*  mobile: +79114104802
+*  e-mail: jaysun0@yandex.ru
+*  githubs: jaysun0,  jaysuno0`:
+    `*  телеграм: @jaysun0
+*  номер: +79114104802
+*  почта: jaysun0@yandex.ru
+*  гитхаб: jaysun0,  jaysuno0`;
+    const title = state.language === 'en' ? 'contacts' : 'контакты';
+    const additionalMessage = state.language === 'en' ? `
+Very nice to meet you here :) 
+If you need a contact - telegram is the best option.`:
+        `Рад вас видеть здесь :)
+Если хотите связаться со мной - телеграм подойдёт больше всего.`;
+    showMessage(contacts, title);
+    addInfo(additionalMessage);
   });
 }
 const imagesControlsListeners = {

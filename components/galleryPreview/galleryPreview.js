@@ -33,7 +33,7 @@ function createGalleryPreviewElement (image, idNumber){
 //compresses image and adds to gallery-preview
 function addGalleryPreviewItem(image, idNumber) {
   createGalleryPreviewElement(image, idNumber);
-  addInfo(`Progress: ${++state.imageAddition.added}/${state.imageAddition.toAdd} ...`);
+  addInfo(`${++state.imageAddition.added}/${state.imageAddition.toAdd} ...`);
   if (state.imageAddition.added === state.imageAddition.toAdd) {
     addInfo(`${state.imageAddition.added} images added.`);
     dom.modal.closeBtn.removeAttribute('disabled');
