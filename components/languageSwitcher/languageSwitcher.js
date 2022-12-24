@@ -13,6 +13,7 @@ function addNodeToTranslate(nodeClass, en, ru){
 function translateTo(lang) {
     if (possibleLangs.includes(lang)){
         state.language = lang;
+        localStorage.setItem('language', lang);
         nodes.forEach(nodeObj => nodeObj.node.textContent = nodeObj[lang]);
     }
 }
@@ -36,5 +37,5 @@ dom.header.languageBtn.addEventListener('click', () => {
     translateTo(lang);
 });
 
-export { initiateNodesTranslate };
+export { initiateNodesTranslate, translateTo };
 

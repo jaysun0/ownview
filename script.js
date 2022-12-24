@@ -3,7 +3,7 @@ initiate();
 
 /* TO BE DONE:
 
-* add language switcher
+* add language save
 * add background image
 * adaptive
 

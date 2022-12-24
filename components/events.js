@@ -2,7 +2,7 @@ import { addNewItem, deleteItem } from './galleryPreview/galleryPreview.js';
 import state, { dom } from './state.js';
 import { getIdNumber } from './toolbox.js';
 import { showMessage, addInfo } from './modal/modal.js';
-import { initiateNodesTranslate} from './languageSwitcher/languageSwitcher.js';
+import { initiateNodesTranslate, translateTo } from './languageSwitcher/languageSwitcher.js';
 import {
   openGallery,
   closeGallery,
@@ -170,12 +170,18 @@ const imagesControlsListeners = {
   },
 };
 
+
 function initiate(){
   dom.galleryPreview.items.forEach((item) => imagesControlsListeners.setupGalleryPreviewItem(item));
   imagesControlsListeners.setupPreviewControls();
   imagesControlsListeners.setupGallery();
   setupHeaderListeners();
   initiateNodesTranslate();
+
+  // translates to user-defined language after reload
+  const lang = localStorage.getItem('language');
+  if (lang) translateTo(lang);
+
   for(let i = 0; i < state.itemsCount; i++) createGalleryImage(`./assets/img/img${i}.jpg`, i);
 }
 
