@@ -22,6 +22,7 @@ const dom = {
   ],
 
   header: {
+    languageBtn: document.querySelector('.header__btn_language'),
     descriptionBtn: document.querySelector('.header__btn_description'),
     contactsBtn: document.querySelector('.header__btn_contacts'),
   },

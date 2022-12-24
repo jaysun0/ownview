@@ -1,4 +1,4 @@
-import state from "../state.js";
+import state, { dom } from "../state.js";
 
 const possibleLangs = ['en', 'ru'];
 const nodes = [];
@@ -11,9 +11,9 @@ function addNodeToTranslate(nodeClass, en, ru){
 }
 
 function translateTo(lang) {
-    if (possibleLangs.contains(lang)){
+    if (possibleLangs.includes(lang)){
         state.language = lang;
-        nodes.forEach(nodeObj => nodeObj.node.textContent === nodeObj[lang]);
+        nodes.forEach(nodeObj => nodeObj.node.textContent = nodeObj[lang]);
     }
 }
 
@@ -30,5 +30,10 @@ function initiateNodesTranslate() {
     addNodeToTranslate('.modal__title', 'system message', 'сиситемное сообщение');
 }
 
-export { translateTo, initiateNodesTranslate };
+dom.header.languageBtn.addEventListener('click', () => {
+    const lang = state.language === 'en' ? 'ru' : 'en';
+    translateTo(lang);
+});
+
+export { initiateNodesTranslate };
 

@@ -93,7 +93,6 @@ function setupHeaderListeners() {
   const logo = document.querySelector('.header__title');
   logo.addEventListener('click', () => window.location.reload());
 
-
   dom.header.descriptionBtn.addEventListener('click', function() {
     const description = `
   This app is a simple way to quickly create your own gallery. 

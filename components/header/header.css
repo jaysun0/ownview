@@ -42,10 +42,13 @@
 }
 
 .header__btn-wrapper {
-  border-radius: 200px;
-  border: 2px solid var(--gray-light);
   width: 36px;
   height: 36px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 200px;
 }
 
 .header__btn-wrapper:hover {
