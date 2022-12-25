@@ -3,9 +3,8 @@ initiate();
 
 /* TO BE DONE:
 
-* add language save
-* add background image
 * adaptive
+* refactor?
 
 */
 

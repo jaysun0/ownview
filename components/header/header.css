@@ -65,3 +65,29 @@
 }
 
 
+/* MEDIA QUERIES */
+@media screen and (max-width: 1080px){
+  .header__title {
+    margin: 8px auto 10px auto;
+  }
+}
+
+@media screen and (max-width: 580px){
+  .header__wrapper_motto {
+    justify-content: center;
+    gap: 0;
+  }
+
+  .header__motto {
+    padding: 0 1rem;
+  }
+}
+
+@media screen and (max-width: 480px){
+  .header__motto {
+    padding: 0 5px;
+  }
+}
+
+
+

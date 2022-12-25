@@ -18,7 +18,6 @@ const dom = {
       document.querySelector('.header'),
       document.querySelector('.gallery-preview__title'),
       document.querySelector('.gallery-preview__controls-wrapper'),
-      document.querySelector('.footer'),
   ],
 
   header: {
