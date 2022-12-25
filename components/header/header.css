@@ -86,6 +86,7 @@
 @media screen and (max-width: 480px){
   .header__motto {
     padding: 0 5px;
+    text-align: center;
   }
 }
 
