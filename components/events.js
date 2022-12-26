@@ -61,8 +61,8 @@ function createGallery() {
       item.style.zIndex = '-1';
     });
   } else {
-    showMessage('To create gallery you need to add some images. On the left there is a file-input to do that.');
-    addInfo('You can add one or multiple files at once.');
+    const message = state.language === 'en' ? 'To create gallery you need to add image/s.' : 'Чтобы создать галерею вам нужно добавить картинку/и.';
+    showMessage(message);
   }
 }
 
