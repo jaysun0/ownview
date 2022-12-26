@@ -38,30 +38,20 @@
 
 /* buttons */
 .header__wrapper_btns {
-  gap: 1rem;
+  flex-wrap: nowrap;
+  gap: 10px;
 }
-
-.header__btn-wrapper {
-  width: 36px;
-  height: 36px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 200px;
-}
-
-.header__btn-wrapper:hover {
-  background-color: var(--gray);
-}
-
 .header__btn {
-  width: 100%;
-  height: 100%;
-  font-size: 1rem;
+  padding: 0 2px 3px 1px;
+  font-size: 22px;
+
   cursor: pointer;
   background: transparent;
   border: none;
+  border-radius: 100px;
+}
+.header__btn:hover {
+  background-color: var(--gray);
 }
 
 

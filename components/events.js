@@ -108,7 +108,7 @@ This app is a simple way to create your own gallery.
 *  It's easily-manageable and comfortable to use.` :
         `Данное приложение - простой способ создать собственную галерею.
 *  Она быстрая, так как загружаемые картинки сжимаются и хранятся подобающим образом.
-*  Она легко-конфигурируемая и удобна в использовании.`;
+*  Она легко-конфигурируема и удобна в использовании.`;
     const title =  state.language === 'en' ? 'about the app' : 'о приложении';
     const adittionalMessage = state.language === 'en' ? `It's not something astonishing, but rather something simple and pleasant to use :)` : 'Это не нечто удивительное, а скорее что-то простое и прятное в использовании.';
     showMessage(description, title);
