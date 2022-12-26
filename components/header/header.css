@@ -65,7 +65,7 @@
 @media screen and (max-width: 580px){
   .header__wrapper_motto {
     justify-content: center;
-    gap: 0;
+    gap: 5px;
   }
 
   .header__motto {

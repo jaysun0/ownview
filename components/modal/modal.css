@@ -54,3 +54,11 @@
 .modal__info {
   padding-top: 1rem;
 }
+
+
+/* MEDIA QUERIES */
+@media screen and (max-width: 500px) {
+  .modal__text-wrapper {
+    padding: 0 1rem;
+  }
+}
