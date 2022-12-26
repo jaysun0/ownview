@@ -1,7 +1,8 @@
 import { dom } from "../state.js";
 
 function showMessage(message, title) {
-  if (title) dom.modal.title.textContent = title;
+  const titleToShow = title ? title : 'system message';
+  dom.modal.title.textContent = titleToShow;
   dom.modal.text.textContent = message;
   dom.modal.wrapper.style.transform = `translateY(${scrollY}px)`;
   dom.modal.wrapper.classList.remove('closed');
