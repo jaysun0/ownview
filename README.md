@@ -10,7 +10,8 @@ Also it's about speed and simplicity.
 + You can easily add and delete images.
 
 ## Link
-[https://jaysuno0.github.io/rsschool-cv/](https://jaysuno0.github.io/rsschool-cv/)
+[https://jaysun0.github.io/ownview/](https://jaysun0.github.io/ownview/)
 
-## Contact 
+## Contacts 
 Telegram:[@jaysun0](https://t.me/jaysun0)
+CV: [web-page](https://jaysuno0.github.io/rsschool-cv/)
