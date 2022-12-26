@@ -10,7 +10,7 @@ import {
   createGalleryImage
 } from './gallery/gallery.js';
 
-/************* GALLERY ACTIONS *************/
+/* GALLERY ACTIONS */
 function addItems(){
   const newPhotos = dom.fileInput.input.files;
   const number = newPhotos.length;
@@ -95,46 +95,51 @@ function open(item) {
 
 
 
-/************* EVENT LISTENERS *************/
+/* HEADER LISTENERS */
+function handleDescriptionBtn() {
+  const description = state.language === 'en' ? `
+This app is a simple way to create your own gallery. 
+*  It's fast as uploaded images are compressed and stored in a right manner. 
+*  It's easily-manageable and comfortable to use.` :
+      `Данное приложение - простой способ создать собственную галерею.
+*  Она быстрая, так как загружаемые картинки сжимаются и хранятся подобающим образом.
+*  Она легко-конфигурируема и удобна в использовании.`;
+  const title =  state.language === 'en' ? 'about the app' : 'о приложении';
+  const adittionalMessage = state.language === 'en' ? `It's not something astonishing, but rather something simple and pleasant to use :)` : 'Это не нечто удивительное, а скорее что-то простое и прятное в использовании.';
+  showMessage(description, title);
+  addInfo(adittionalMessage);
+}
+
+function handleContactsBtn() {
+  const contacts = state.language === 'en' ? `
+*  telegram: @jaysun0
+*  mobile: +79114104802
+*  e-mail: jaysun0@yandex.ru
+*  githubs: jaysun0,  jaysuno0`:
+      `*  телеграм: @jaysun0
+*  номер: +79114104802
+*  почта: jaysun0@yandex.ru
+*  гитхаб: jaysun0,  jaysuno0`;
+  const title = state.language === 'en' ? 'contacts' : 'контакты';
+  const additionalMessage = state.language === 'en' ? `
+Very nice to meet you here :) 
+If you need a contact - telegram is the best option.`:
+      `Рад вас видеть здесь :)
+Если хотите связаться со мной - телеграм подойдёт больше всего.`;
+  showMessage(contacts, title);
+  addInfo(additionalMessage);
+}
+
 function setupHeaderListeners() {
   // reload page if logo was clicked
   const logo = document.querySelector('.header__title');
   logo.addEventListener('click', () => window.location.reload());
 
-  dom.header.descriptionBtn.addEventListener('click', function() {
-    const description = state.language === 'en' ? `
-This app is a simple way to create your own gallery. 
-*  It's fast as uploaded images are compressed and stored in a right manner. 
-*  It's easily-manageable and comfortable to use.` :
-        `Данное приложение - простой способ создать собственную галерею.
-*  Она быстрая, так как загружаемые картинки сжимаются и хранятся подобающим образом.
-*  Она легко-конфигурируема и удобна в использовании.`;
-    const title =  state.language === 'en' ? 'about the app' : 'о приложении';
-    const adittionalMessage = state.language === 'en' ? `It's not something astonishing, but rather something simple and pleasant to use :)` : 'Это не нечто удивительное, а скорее что-то простое и прятное в использовании.';
-    showMessage(description, title);
-    addInfo(adittionalMessage);
-  });
-
-  dom.header.contactsBtn.addEventListener('click', function() {
-    const contacts = state.language === 'en' ? `
-*  telegram: @jaysun0
-*  mobile: +79114104802
-*  e-mail: jaysun0@yandex.ru
-*  githubs: jaysun0,  jaysuno0`:
-    `*  телеграм: @jaysun0
-*  номер: +79114104802
-*  почта: jaysun0@yandex.ru
-*  гитхаб: jaysun0,  jaysuno0`;
-    const title = state.language === 'en' ? 'contacts' : 'контакты';
-    const additionalMessage = state.language === 'en' ? `
-Very nice to meet you here :) 
-If you need a contact - telegram is the best option.`:
-        `Рад вас видеть здесь :)
-Если хотите связаться со мной - телеграм подойдёт больше всего.`;
-    showMessage(contacts, title);
-    addInfo(additionalMessage);
-  });
+  dom.header.descriptionBtn.addEventListener('click', handleDescriptionBtn);
+  dom.header.contactsBtn.addEventListener('click', handleContactsBtn);
 }
+
+/* IMAGES LISTENERS */
 const imagesControlsListeners = {
   setupPreviewControls() {
     //add a new photo to the gallery
