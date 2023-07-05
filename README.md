@@ -7,5 +7,5 @@ Images in gallery preview are automatically compressed, thus app is really fast.
 [https://jaysun0.github.io/ownview/](https://jaysun0.github.io/ownview/)
 
 ## Contacts 
-Telegram:[@jaysun0](https://t.me/jaysun0)
+Telegram:[@jaysun0](https://t.me/jaysun0)<br>
 CV: [web-page](https://jaysuno0.github.io/rsschool-cv/)
